@@ -1,9 +1,9 @@
 class GamesController < ApplicationController
   def index
     @users = User.all
-
-    @users.each do |user|
-      p user
-    end
+    p @users
+    
+    @games = Game.all
+    p @games
   end
 end

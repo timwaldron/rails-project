@@ -10,6 +10,7 @@
 
 puts 'Generating test accounts...'
 
+Game.destroy_all
 User.destroy_all
 
 params = {
@@ -45,7 +46,7 @@ params = {
 }
 User.new(params).save
 puts 'Created David'
-
+puts
 
 puts 'Generating random users...'
 20.times do
@@ -67,5 +68,28 @@ puts 'Generating random users...'
 
   User.new(params).save
   puts "Created user #{params[:email]}"
+end
 
+all_users = User.all
+
+all_users.each do |user|
+
+  games_for_sale = rand(1..3)
+
+  games_for_sale.times do
+    params = {
+      title: Faker::Name.unique.first_name,
+      genre: Faker::Book.genre,
+      price: rand(1.00..100.00),
+      platform: 'GAME TEST',
+      preowned: [true, false].sample,
+      condition: rand(1..5),
+      sold: [true, false].sample,
+      note: Faker::Lorem.paragraph,
+      rating: rand(1..10),
+      user_id: user.id
+    }
+    Game.new(params).save
+    puts "Created fake game: #{params[:title]}"
+  end
 end
