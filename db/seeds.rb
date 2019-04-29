@@ -10,17 +10,21 @@
 
 puts 'Generating test accounts...'
 
+User.destroy_all
+
 params = {
   first_name: 'Tim',
   last_name: 'Waldron',
   email: 'tim@ozgamers.shop',
   username: 'tim',
+  :password => '123123',
+  :password_confirmation => '123123',
   street_number: '555',
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
   postcode: 3000,
-  date_of_birth: Date.now()
+  date_of_birth: DateTime.now
 }
 User.new(params).save
 puts 'Created Tim'
@@ -30,12 +34,14 @@ params = {
   last_name: 'Bui',
   email: 'david@ozgamers.shop',
   username: 'david',
+  :password => '123123',
+  :password_confirmation => '123123',
   street_number: '555',
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
   postcode: 3000,
-  date_of_birth: Date.now()
+  date_of_birth: DateTime.now
 }
 User.new(params).save
 puts 'Created David'
@@ -47,16 +53,19 @@ puts 'Generating random users...'
   params = {
     first_name: Faker::Name.unique.first_name,
     last_name:  Faker::Name.unique.last_name,
-    email: "#{params[:first_name]}@ozgamers.shop",
+    email: "#{params[:first_name].downcase}@ozgamers.shop",
     username: params[:first_name],
+    :password => '123123',
+    :password_confirmation => '123123',
     street_number: '555',
     street_name: 'Fake Street',
     suburb: 'Fakeland',
     city: 'Melbourne',
     postcode: 3000,
-    date_of_birth: Date.now()
+    date_of_birth: DateTime.now
   }
-  
+
   User.new(params).save
+  puts "Created user #{params[:email]}"
 
 end

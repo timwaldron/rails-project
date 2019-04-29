@@ -66,3 +66,9 @@ gem 'devise'
 
 # Authorization
 gem 'cancancan'
+
+# Fake data
+gem 'faker'
+
+# Datetime for date and time
+gem 'date'
