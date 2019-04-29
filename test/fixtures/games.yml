@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  genre: MyString
+  price: 1.5
+  platform: MyString
+  preowned: false
+  condition: 1
+  sold: false
+  note: MyString
+  rating: 1
+
+two:
+  title: MyString
+  genre: MyString
+  price: 1.5
+  platform: MyString
+  preowned: false
+  condition: 1
+  sold: false
+  note: MyString
+  rating: 1
