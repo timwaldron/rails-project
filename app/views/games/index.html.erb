@@ -12,6 +12,7 @@
     <p>Seller Notes: <%= game.note.to_s %></p>
     <p>Rating: <%= game.rating %></p>
     <p>Posted at: <%= game.created_at %></p>
+    <p>Posted by: <strong><%= find_username_by_id(game.user_id) %></strong></p>
   </div>
   <br>
 <% end %>
