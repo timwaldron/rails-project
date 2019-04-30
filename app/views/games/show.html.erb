@@ -1,6 +1,6 @@
 <h1>Title: <%= @game.title %></h1>
 <p>Genre: <%= @game.genre %></p>
-<p>Price: $<%= @game.price.round(2) %></p>
+<p>Price: $<%= sprintf("%.2f", @game.price.round(2)) %></p>
 <p>Platform: <%= @game.platform %></p>
 <p>Condition: <%= @game.condition %></p>
 <p>Seller Notes: <%= @game.note.to_s %></p>
@@ -16,5 +16,3 @@
 <% else %>
   <p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
 <% end %>
-
-

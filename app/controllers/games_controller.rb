@@ -61,6 +61,8 @@ class GamesController < ApplicationController
     @platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
   end
 
+  # Private params
+
   private
     def game_params
       params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating)
