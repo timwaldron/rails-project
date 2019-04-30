@@ -1,0 +1,72 @@
+<h1>Sell a Game</h1>
+
+<form action="<%= games_path %>" method="POST" >
+    <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+    <input type="hidden" value="<%= current_user.id %>" name="user_id">
+    <% if @game.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+        <%= pluralize(@game.errors.count, "error") %> prohibited
+        this article from being saved:
+        </h2>
+        <ul>
+        <% @game.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title"/>
+
+    <label for="genre">Genre</label>
+    <select name="genre">
+      <option value="action">Action</option>
+      <option value="adventure">Adventure</option>
+      <option value="role-playing">Role-Playing</option>
+      <option value="simulation">Simulation</option>
+      <option value="strategy">Strategy</option>
+      <option value="sports">Sports</option>
+    </select>
+    
+    <label for="price">Selling price</label>
+    <input type='number' step='0.01' value='5.00' name="price" id="price">
+    
+    <label for="platform">Platform</label>
+    <select name="platform">
+      <option value="playstation4">PlayStation 4</option>
+      <option value="xboxone">Xbox One</option>
+      <option value="nintendoswitch">Nintendo Switch</option>
+      <option value="pc">PC</option>
+    </select>
+    
+    <label for="condition">Condition</label>
+    <select name="condition">
+      <option value="4">Brand New</option>
+      <option value="3">Like New</option>
+      <option value="2">Very Good</option>
+      <option value="1">Good</option>
+      <option value="0">Acceptable</option>
+    </select> 
+
+    <label>Note</label>
+    <input type="textarea" name="Note" id="Note" />
+
+    <label for="rating">Rating</label>
+    <select name="rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+
+    </select>
+
+    <input type="submit" value="Create" />
+</form>
