@@ -1,0 +1,59 @@
+<h1>Edit Game Listing</h1>
+
+<form class="edit-form" action="<%= update_game_path(params[:id]) %>" method="POST" >
+  <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+  <input type="hidden" name="_method" value="patch" />
+  <input type="hidden" value="<%= current_user.id %>" name="user_id">
+
+  <label for="title">Title</label>
+  <input type="text" name="title" id="title" placeholder="Title" value="<%= @game.title %>" />
+
+  <label for="genre">Genre</label>
+  <input type="text" name="genre" name="genre" id="genre" placeholder="Genre" value="<%= @game.genre %>"/>
+
+  <label for="platform">Platform</label>
+  <select name="platform">
+    <% get_supported_platforms().each do |platform| %>
+      <option <%= 'selected' if @game.platform == platform %> value="<%= platform %>"><%= platform %></option>
+    <% end %>
+  </select> 
+
+  <label for="condition">Condition</label>
+  <select name="condition">
+    <option value="4">Brand New</option>
+    <option value="3">Like New</option>
+    <option value="2">Very Good</option>
+    <option value="1">Good</option>
+    <option value="0">Acceptable</option>
+  </select> 
+
+  <label for="price">Price</label>
+  <input type="number" step="0.01" min="1" value="5.00" name="price">
+
+  <label for="rating">Rating</label>
+  <select name="rating">
+    <% for index in 1..10 do %>
+      <option <%= 'selected' if @game.rating == index %> value="<%= index %>"><%= index %></option>
+    <% end %>
+  </select>
+
+  <label for="note">Seller Notes</label>
+  <textarea name="note" rows="4" cols="50"><%= @game.note %></textarea>
+
+  <input type="submit" value="Update" />
+</form>
+
+
+
+    <%# t.string "title" %>
+    <%# t.string "genre" %>
+    <%# t.float "price"
+    t.string "platform"
+    t.integer "condition"
+    t.boolean "sold"
+    t.string "note"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_games_on_user_id" %>
