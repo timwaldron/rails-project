@@ -82,7 +82,6 @@ all_users.each do |user|
       genre: Faker::Book.genre,
       price: rand(1.00..100.00),
       platform: 'GAME TEST',
-      preowned: [true, false].sample,
       condition: rand(1..5),
       sold: [true, false].sample,
       note: Faker::Lorem.paragraph,

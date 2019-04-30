@@ -1,18 +1,10 @@
-<h1>AUS Gamers</h1>
-
 <% @games.each do |game| %>
-  <div class="games-container">
-    <h3>Title: <%= game.title %></h3>
-    <p>Genre: <%= game.genre %></p>
+  <div class="game-listing-card">
+    <p>Title: <%= game.title %></p>
     <p>Price: $<%= game.price.round(2) %></p>
     <p>Platform: <%= game.platform %></p>
-    <p>Preowned? <%= game.preowned %></p>
-    <p>Condition: <%= game.condition %></p>
-    <p>Sold? <%= game.sold %></p>
-    <p>Seller Notes: <%= game.note.to_s %></p>
-    <p>Rating: <%= game.rating %></p>
-    <p>Posted at: <%= game.created_at %></p>
     <p>Posted by: <strong><%= find_username_by_id(game.user_id) %></strong></p>
+    <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
   </div>
   <br>
 <% end %>
