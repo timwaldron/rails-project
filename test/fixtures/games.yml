@@ -5,7 +5,6 @@ one:
   genre: MyString
   price: 1.5
   platform: MyString
-  preowned: false
   condition: 1
   sold: false
   note: MyString
@@ -16,7 +15,6 @@ two:
   genre: MyString
   price: 1.5
   platform: MyString
-  preowned: false
   condition: 1
   sold: false
   note: MyString
