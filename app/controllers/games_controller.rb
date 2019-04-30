@@ -38,6 +38,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     if @game.update(game_params)
+      flash[:success] = "You game listing has been updated"
       redirect_to show_game_path(params[:id])
     else
       render 'edit'
