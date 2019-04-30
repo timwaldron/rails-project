@@ -16,7 +16,7 @@ User.destroy_all
 params = {
   first_name: 'Tim',
   last_name: 'Waldron',
-  email: 'tim@ozgamers.shop',
+  email: 'tim@a.a',
   username: 'tim',
   :password => '123123',
   :password_confirmation => '123123',
@@ -33,7 +33,7 @@ puts 'Created Tim'
 params = {
   first_name: 'David',
   last_name: 'Bui',
-  email: 'david@ozgamers.shop',
+  email: 'david@a.a',
   username: 'david',
   :password => '123123',
   :password_confirmation => '123123',
@@ -54,7 +54,7 @@ puts 'Generating random users...'
   params = {
     first_name: Faker::Name.unique.first_name,
     last_name:  Faker::Name.unique.last_name,
-    email: "#{params[:first_name].downcase}@ozgamers.shop",
+    email: "#{params[:first_name].downcase}@email.com",
     username: params[:first_name],
     :password => '123123',
     :password_confirmation => '123123',
@@ -71,6 +71,7 @@ puts 'Generating random users...'
 end
 
 all_users = User.all
+platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
 
 all_users.each do |user|
 
@@ -78,13 +79,13 @@ all_users.each do |user|
 
   games_for_sale.times do
     params = {
-      title: Faker::Name.unique.first_name,
+      title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
       genre: Faker::Book.genre,
       price: rand(1.00..100.00),
-      platform: 'GAME TEST',
+      platform: platforms.sample,
       condition: rand(1..5),
       sold: [true, false].sample,
-      note: Faker::Lorem.paragraph,
+      note: Faker::Restaurant.review,
       rating: rand(1..10),
       user_id: user.id
     }

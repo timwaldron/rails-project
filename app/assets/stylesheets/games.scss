@@ -1,3 +1,59 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.game-listing {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game-listing-card {
+  margin: 25px;
+  text-decoration: none;
+  width: 320px;
+  height: 328px;
+
+  .image-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 228px;
+    width: 320px;
+    background: dodgerblue;
+  }
+
+  .game-info-panel {
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-evenly;
+    // height: 100px;
+    // width: 100%;
+    display: flex;
+    background: grey;
+    color: white;
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      padding-left: 10px;
+      padding-top: 15px;
+      width: 160px;
+      // background: cyan;
+    }
+    .right-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-evenly;
+      padding-right: 10px;
+      padding-top: 15px;
+
+      width: 160px;
+      // background: orange;
+    }
+  }
+}

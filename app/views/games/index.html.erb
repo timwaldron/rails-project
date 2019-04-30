@@ -1,10 +1,24 @@
-<% @games.each do |game| %>
-  <div class="game-listing-card">
-    <p>Title: <%= game.title %></p>
-    <p>Price: $<%= game.price.round(2) %></p>
-    <p>Platform: <%= game.platform %></p>
-    <p>Posted by: <strong><%= find_username_by_id(game.user_id) %></strong></p>
-    <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
-  </div>
-  <br>
-<% end %>
+<div class="game-listing">
+  <% @games.each do |game| %>
+
+    <div class="game-listing-card">
+
+      <div class="image-panel"><p>[ REFERENCE TO ACTIVESTORAGE ]</p></div>
+
+      <div class="game-info-panel">
+        <div class="left-side">
+          <p><%= game.title %></p>
+          <p><%= game.platform %></p>
+          <p><strong><%= find_username_by_id(game.user_id) %></strong></p>
+        </div>
+
+        <div class="right-side">
+          <p>Translate --> <%= game.condition %></p>
+          <p>$<%= sprintf("%.2f", game.price.round(2)) %></p>
+          <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

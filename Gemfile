@@ -72,3 +72,7 @@ gem 'faker'
 
 # Datetime for date and time
 gem 'date'
+
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
