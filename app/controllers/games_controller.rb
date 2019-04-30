@@ -7,6 +7,21 @@ class GamesController < ApplicationController
     @games = Game.all.order("created_at ASC")
   end
 
+  def create
+    @game = Game.new(game_params.merge(user_id: current_user.id))
+
+    if @game.save
+        flash[:success] = "A Game was successfully created"
+        redirect_to show_game_path @game.id
+      else
+        render 'new'
+      end
+  end
+
+  def new
+    @game = Game.new
+  end
+
   def handle_user_notfound
     return "ERROR"
   end
