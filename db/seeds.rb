@@ -88,6 +88,7 @@ all_users.each do |user|
       note: Faker::Restaurant.review,
       rating: rand(1..10),
       user_id: user.id
+      # images: nil
     }
     Game.new(params).save
     puts "Created fake game: #{params[:title]}"

@@ -1,6 +1,6 @@
 <h1>Sell a Game</h1>
 
-<form action="<%= games_path %>" method="POST" >
+<form action="<%= games_path %>" method="POST" enctype="multipart/form-data" >
     <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
     <input type="hidden" value="<%= current_user.id %>" name="user_id">
     <% if @game.errors.any? %>
@@ -58,6 +58,9 @@
         <option <%= 'selected' if index == 5 %> value="<%= index %>"><%= index %></option>
       <% end %>
     </select>
+
+    <label>Upload images</label>
+    <input type="file" name="images" multiple="true" accept="image">
 
     <input type="submit" value="Create" />
 </form>

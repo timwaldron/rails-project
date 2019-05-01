@@ -2,9 +2,18 @@
   <% @games.each do |game| %>
 
     <div class="game-listing-card">
-
-      <div class="image-panel"><p>[ REFERENCE TO ACTIVESTORAGE ]</p></div>
-
+    <div class="image-panel">
+      <p>
+      <% if game.images.attached? %>
+        <% game.images.each do |file| %>
+          <% p "HERE IS AN IMAGE OBJECT: #{file}"%>
+          <%= image_tag file, class: 'image-size' %>
+        <% end %>
+      <% else %>
+        <p>No images for this game</p>
+      <% end %>
+      </p>
+    </div>
       <div class="game-info-panel">
         <div class="left-side">
           <p><%= game.title %></p>

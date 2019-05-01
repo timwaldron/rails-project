@@ -1,6 +1,6 @@
 <h1>Edit Game Listing</h1>
 
-<form class="edit-form" action="<%= update_game_path(params[:id]) %>" method="POST" >
+<form class="edit-form" action="<%= update_game_path(params[:id]) %>" method="POST" enctype="multipart/form-data" >
   <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
   <input type="hidden" name="_method" value="patch" />
   <input type="hidden" value="<%= current_user.id %>" name="user_id">
@@ -60,6 +60,9 @@
 
   <label for="note">Notes</label>
   <textarea name="note" rows="4" cols="50"><%= @game.note %></textarea>
+
+  <label>Upload images</label>
+    <input type="file" name="images" multiple="true" accept="image">
 
   <input type="submit" value="Update" />
 </form>
