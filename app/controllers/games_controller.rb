@@ -37,10 +37,14 @@ class GamesController < ApplicationController
   end
 
   def edit
-   @game = Game.find(params[:id])
-   if (@game.user != current_user) || (!current_user.admin?)
-    redirect_to root_path
-   end
+    @game = Game.find(params[:id])
+    if current_user && current_user.admin?
+      render 'edit'
+      return
+    end 
+    if @game.user != current_user 
+      redirect_to root_path
+    end
   end
 
   def update
