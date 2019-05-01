@@ -1,0 +1,44 @@
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .right-container {
+    display: flex;
+    width: 50%;
+
+    .right-left-container {
+      width: 50%;
+    }
+    .right-right-container {
+      width: 50%;
+    }
+  }
+}
+
+.update-container {
+  margin: 40px 0 20px 0;
+  width: 30%;
+
+  .confirm-password-field {
+    // width: 50%;
+    // padding: 50px;
+  }
+  
+  .confirm-panel-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.field {
+  margin: 10px 0;
+}

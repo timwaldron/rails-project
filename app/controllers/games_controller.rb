@@ -19,13 +19,13 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
 
     if (!user_signed_in?)
       flash[:success] = "You must be signed in to use this feature"
       redirect_to new_user_session_path
+    else
+      @game = Game.new
     end
-
   end
 
   def handle_user_notfound

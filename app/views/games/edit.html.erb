@@ -1,4 +1,5 @@
 <% if user_signed_in? %>
+
 <h1>Edit Game Listing</h1>
 
 <form class="edit-form" action="<%= update_game_path(params[:id]) %>" method="POST" enctype="multipart/form-data" >
@@ -67,11 +68,20 @@
   <textarea name="note" rows="4" cols="50"><%= @game.note %></textarea>
 
   <label>Upload images</label>
-    <input type="file" name="images" multiple="true" accept="image">
+  <input type="file" name="images" multiple="true" accept="image">
 
   <input type="submit" value="Update" />
+  
+  <div class="listing-images">
+  <p>Uploaded images: </p>
+    <% @game.images.each do |file| %>
+      <div class="uploaded-image">
+        <%= image_tag file, class: 'image-size' %>
+        <%= link_to 'Remove Image' %>
+      </div>
+    <% end %>
+  </div>
 </form>
-
 <% else %>
   <p>please sign in</p>
 

@@ -10,6 +10,8 @@
 
 puts 'Generating test accounts...'
 
+states = ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
+
 Game.destroy_all
 User.destroy_all
 
@@ -24,8 +26,9 @@ params = {
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
+  state: states[0],
   postcode: 3000,
-  date_of_birth: DateTime.now,
+  date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: true
 }
 User.new(params).save
@@ -42,8 +45,9 @@ params = {
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
+  state: states[0],
   postcode: 3000,
-  date_of_birth: DateTime.now,
+  date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: false
 }
 User.new(params).save
@@ -51,7 +55,10 @@ puts 'Created David'
 puts
 
 puts 'Generating random users...'
+
 20.times do
+  street_address = Faker::Address.street_address
+  #=> "282 Kevin Brook"
 
   params = {
     first_name: Faker::Name.unique.first_name,
@@ -60,40 +67,35 @@ puts 'Generating random users...'
     username: "#{params[:first_name].downcase}#{rand(1000..9999)}",
     :password => '123123',
     :password_confirmation => '123123',
-    street_number: '555',
-    street_name: 'Fake Street',
-    suburb: 'Fakeland',
-    city: 'Melbourne',
-    postcode: 3000,
-    date_of_birth: DateTime.now,
+    street_number: rand(1..999),
+    street_name: Faker::Address.street_name,
+    suburb: Faker::Address.city,
+    city: Faker::Address.city,
+    postcode: rand(1000..9999),
+    state: states.sample,
+    date_of_birth: Faker::Date.backward(rand(6575..18000))
     admin: false
   }
 
   User.new(params).save
-  puts "Created user #{params[:email]}"
+  puts "Created user: User ID: #{params[:username]} | #{params[:email]}"
 end
 
-all_users = User.all
 platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
 
-all_users.each do |user|
+25.times do
+  params = {
+    title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
+    genre: Faker::Book.genre,
+    price: rand(1.00..100.00),
+    platform: platforms.sample,
+    condition: rand(0..4),
+    sold: [true, false].sample,
+    note: Faker::Restaurant.review,
+    rating: rand(1..10),
+    user_id: User.all.sample.id
+  }
 
-  games_for_sale = rand(1..3)
-
-  games_for_sale.times do
-    params = {
-      title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
-      genre: Faker::Book.genre,
-      price: rand(1.00..100.00),
-      platform: platforms.sample,
-      condition: rand(0..4),
-      sold: [true, false].sample,
-      note: Faker::Restaurant.review,
-      rating: rand(1..10),
-      user_id: user.id
-      # images: nil
-    }
-    Game.new(params).save
-    puts "Created fake game: #{params[:title]}"
-  end
+  Game.new(params).save
+  puts "Created game listing '#{params[:title]}' from user #{User.find(params[:user_id]).username}"
 end
