@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// show.erb.html
+.listing-images {
+
+  img {
+    // position: relative;
+    // float: left;
+    // background: white;
+    width:  250px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+  }
+
+  .uploaded-images {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 .game-listing {
   height: 100vh;
   width: 100%;
@@ -19,9 +39,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 228px;
     width: 320px;
     background: white;
+    color: $gunmetal;
+
+    img {
+      float: left;
+      width: 100%;
+      height: auto;
+    }
   }
 
   .game-info-panel {
