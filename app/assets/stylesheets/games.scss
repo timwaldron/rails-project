@@ -25,14 +25,13 @@
   }
 
   .game-info-panel {
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-evenly;
-    // height: 100px;
-    // width: 100%;
     display: flex;
-    background: grey;
+    background: $gunmetal;
     color: white;
+
+    p {
+      font-size: 14px;
+    }
 
     .left-side {
       display: flex;
@@ -41,8 +40,8 @@
       
       padding-left: 10px;
       padding-top: 15px;
-      width: 160px;
-      // background: cyan;
+      width: 200px;
+      
     }
     .right-side {
       display: flex;
@@ -52,7 +51,7 @@
       padding-right: 10px;
       padding-top: 15px;
 
-      width: 160px;
+      width: 120px;
       // background: orange;
     }
   }

@@ -13,7 +13,7 @@
         </div>
 
         <div class="right-side">
-          <p>Translate --> <%= game.condition %></p>
+          <p><%= convert_item_condition(game.condition) %></p>
           <p>$<%= sprintf("%.2f", game.price.round(2)) %></p>
           <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
         </div>
