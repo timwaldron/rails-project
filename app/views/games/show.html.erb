@@ -1,3 +1,16 @@
+
+  <div>
+  <p> <% if @game.images.attached? %>
+        <% @game.images.each do |file| %>
+          <% p "HERE IS AN IMAGE OBJECT: #{file}"%>
+          <%= image_tag file, class: 'image-size' %>
+        <% end %>
+      <% else %>
+        <p>No images for this game</p>
+      <% end %>
+  </p>
+  </div>
+
 <h1>Title: <%= @game.title %></h1>
 <p>Genre: <%= @game.genre %></p>
 <p>Price: $<%= sprintf("%.2f", @game.price.round(2)) %></p>
