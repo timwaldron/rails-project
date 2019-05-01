@@ -28,7 +28,8 @@ params = {
   city: 'Melbourne',
   state: states[0],
   postcode: 3000,
-  date_of_birth: Faker::Date.backward(rand(6575..18000))
+  date_of_birth: Faker::Date.backward(rand(6575..18000)),
+  admin: true
 }
 User.new(params).save
 puts 'Created Tim'
@@ -46,7 +47,8 @@ params = {
   city: 'Melbourne',
   state: states[0],
   postcode: 3000,
-  date_of_birth: Faker::Date.backward(rand(6575..18000))
+  date_of_birth: Faker::Date.backward(rand(6575..18000)),
+  admin: false
 }
 User.new(params).save
 puts 'Created David'
@@ -72,6 +74,7 @@ puts 'Generating random users...'
     postcode: rand(1000..9999),
     state: states.sample,
     date_of_birth: Faker::Date.backward(rand(6575..18000))
+    admin: false
   }
 
   User.new(params).save

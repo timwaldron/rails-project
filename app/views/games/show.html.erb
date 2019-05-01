@@ -21,8 +21,10 @@
   <p>Last Edited: <%= @game.updated_at %></p>
 <% end %>
 
-<% if user_signed_in? && current_user.id == @game.user_id %>
+
+<% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
   <p><%= link_to 'Edit Listing', edit_game_path(@game.id) %></p>
+  <p><%= link_to "delete", destroy_game_path(@game.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% else %>
   <p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
 <% end %>

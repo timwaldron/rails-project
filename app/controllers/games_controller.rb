@@ -1,10 +1,10 @@
 class GamesController < ApplicationController
   helper_method :find_username_by_id, :get_supported_platforms, :convert_item_condition
-
+  
   # CRUD
 
   def index
-    @games = Game.all.order("created_at ASC")
+    @games = Game.all.order("created_at DESC")
   end
 
   def create
@@ -37,7 +37,10 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
+   @game = Game.find(params[:id])
+   if (@game.user != current_user) || (!current_user.admin?)
+    redirect_to root_path
+   end
   end
 
   def update
@@ -49,6 +52,13 @@ class GamesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    flash[:success] = "Your game was successfully deleted"
+    redirect_to games_path
   end
 
   # Helper Method's

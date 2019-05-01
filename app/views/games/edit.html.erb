@@ -1,7 +1,5 @@
 <% if user_signed_in? %>
 
-<% else %>
-
 <h1>Edit Game Listing</h1>
 
 <form class="edit-form" action="<%= update_game_path(params[:id]) %>" method="POST" enctype="multipart/form-data" >
@@ -51,10 +49,14 @@
     <option value="1">Good</option>
     <option value="0">Acceptable</option>
   </select> 
-
-  <label for="price">Price</label>
-  <input type="number" step="0.01" min="1" name="price" value="<%= @game.price %>">
-
+  
+  <% if current_user.admin? %>
+    <label for="price">Price</label>
+    <input type="number" step="0.01" min="1" value="5.00" name="price" value="<%= @game.price %>">
+  <% else %>
+    <p>Please email the admin to change the price or create a new one</p>
+  <% end %>
+  
   <label for="rating">Rating</label>
   <select name="rating">
     <% for index in 1..10 do %>
@@ -69,7 +71,7 @@
   <input type="file" name="images" multiple="true" accept="image">
 
   <input type="submit" value="Update" />
-
+  
   <div class="listing-images">
   <p>Uploaded images: </p>
     <% @game.images.each do |file| %>
@@ -80,3 +82,7 @@
     <% end %>
   </div>
 </form>
+<% else %>
+  <p>please sign in</p>
+
+<% end %>
