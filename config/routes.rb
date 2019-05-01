@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   
   #root
   root "games#index"
+
+  # Delete
+  delete "/games/:id", to: "games#destroy", as: "destroy_game"
 end

@@ -25,7 +25,8 @@ params = {
   suburb: 'Fakeland',
   city: 'Melbourne',
   postcode: 3000,
-  date_of_birth: DateTime.now
+  date_of_birth: DateTime.now,
+  admin: true
 }
 User.new(params).save
 puts 'Created Tim'
@@ -42,7 +43,8 @@ params = {
   suburb: 'Fakeland',
   city: 'Melbourne',
   postcode: 3000,
-  date_of_birth: DateTime.now
+  date_of_birth: DateTime.now,
+  admin: false
 }
 User.new(params).save
 puts 'Created David'
@@ -63,7 +65,8 @@ puts 'Generating random users...'
     suburb: 'Fakeland',
     city: 'Melbourne',
     postcode: 3000,
-    date_of_birth: DateTime.now
+    date_of_birth: DateTime.now,
+    admin: false
   }
 
   User.new(params).save
