@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2019_05_01_050606) do
     t.string "city"
     t.integer "postcode"
     t.date "date_of_birth"
-    t.boolean "admin"
     t.string "state"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

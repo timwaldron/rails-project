@@ -73,7 +73,7 @@ puts 'Generating random users...'
     city: Faker::Address.city,
     postcode: rand(1000..9999),
     state: states.sample,
-    date_of_birth: Faker::Date.backward(rand(6575..18000))
+    date_of_birth: Faker::Date.backward(rand(6575..18000)),
     admin: false
   }
 
