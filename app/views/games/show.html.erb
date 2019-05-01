@@ -2,7 +2,7 @@
 <p>Genre: <%= @game.genre %></p>
 <p>Price: $<%= sprintf("%.2f", @game.price.round(2)) %></p>
 <p>Platform: <%= @game.platform %></p>
-<p>Condition: <%= @game.condition %></p>
+<p>Condition: <%= convert_item_condition(@game.condition) %></p>
 <p>Seller Notes: <%= @game.note.to_s %></p>
 <p>Rating: <%= @game.rating %></p>
 <p>Posted: <%= @game.created_at %></p>

@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  helper_method :find_username_by_id, :get_supported_platforms
+  helper_method :find_username_by_id, :get_supported_platforms, :convert_item_condition
 
   # CRUD
 
@@ -20,6 +20,12 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+
+    if (!user_signed_in?)
+      flash[:success] = "You must be signed in to use this feature"
+      redirect_to new_user_session_path
+    end
+
   end
 
   def handle_user_notfound
@@ -52,13 +58,31 @@ class GamesController < ApplicationController
     if User.exists?(id: user_id)
       return User.find(user_id).username
     else
-      # Logic to email support about an issue
+      # Logic to email support about this issue
       return "User is missing"
     end
   end
 
   def get_supported_platforms
     @platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
+  end
+
+  def convert_item_condition(condition_int)
+    case condition_int
+    when 4
+      "Brand New"
+    when 3
+      "Like New"
+    when 2
+      "Very Good"
+    when 1
+      "Good"
+    when 0
+      "Acceptable"
+    else
+      # Logic to email support about this issue
+      "Error: #{condition_int}"
+    end
   end
 
   # Private params
