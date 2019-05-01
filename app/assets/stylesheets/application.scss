@@ -13,16 +13,11 @@
  */
 
  @import "bootstrap";
+ @import "variables";
  @import "games";
+ @import "navbar";
 
- .navbar {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.navbar-links {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
+ * {
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ }
