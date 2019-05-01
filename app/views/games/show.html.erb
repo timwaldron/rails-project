@@ -1,19 +1,16 @@
-
-  <div>
-  <p> <% if @game.images.attached? %>
-        <% @game.images.each do |file| %>
-          <% p "HERE IS AN IMAGE OBJECT: #{file}"%>
-          <%= image_tag file, class: 'image-size' %>
-        <% end %>
-      <% else %>
-        <p>No images for this game</p>
-      <% end %>
-  </p>
+<% if @game.images.attached? %>
+  <div class="listing-images">
+    <% @game.images.each do |file| %>
+      <%= image_tag file, class: 'image-size' %>
+    <% end %>
   </div>
+<% else %>
+  <p>No images for this game</p>
+<% end %>
 
 <h1>Title: <%= @game.title %></h1>
 <p>Genre: <%= @game.genre %></p>
-<p>Price: $<%= sprintf("%.2f", @game.price.round(2)) %></p>
+<p>Price: $<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %></p>
 <p>Platform: <%= @game.platform %></p>
 <p>Condition: <%= convert_item_condition(@game.condition) %></p>
 <p>Seller Notes: <%= @game.note.to_s %></p>

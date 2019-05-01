@@ -5,10 +5,7 @@
     <div class="image-panel">
       <p>
       <% if game.images.attached? %>
-        <% game.images.each do |file| %>
-          <% p "HERE IS AN IMAGE OBJECT: #{file}"%>
-          <%= image_tag file, class: 'image-size' %>
-        <% end %>
+        <%= image_tag game.images.first, class: 'image-size' %>
       <% else %>
         <p>No images for this game</p>
       <% end %>
@@ -23,7 +20,7 @@
 
         <div class="right-side">
           <p><%= convert_item_condition(game.condition) %></p>
-          <p>$<%= sprintf("%.2f", game.price.round(2)) %></p>
+          <p>$<%= number_with_delimiter(sprintf("%.2f", game.price.round(2))) %></p>
           <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
         </div>
       </div>
