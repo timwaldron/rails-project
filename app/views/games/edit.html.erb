@@ -67,8 +67,8 @@
   <label for="note">Notes</label>
   <textarea name="note" rows="4" cols="50"><%= @game.note %></textarea>
 
-  <label>Upload images</label>
-  <input type="file" name="images" multiple="true" accept="image">
+  <label for="images[]">Upload images</label>
+  <input type="file" name="images[]" multiple="true" accept="image">
 
   <input type="submit" value="Update" />
   
