@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Receipt #<%= @transaction.id %></h1>
+    <p>I'm sure <%= @seller.first_name %> says thank you!</p>
+    <br/>
+    <p>Game: <%= get_game(@transaction.item_id).title %></p>
+    <p>Price: $<%= get_game(@transaction.item_id).price %></p>
+    <p>Platform: <%= get_game(@transaction.item_id).platform %></p>
+    <p>Transaction timestamp: <%= @transaction.created_at %></p>
+  </body>
+</html>

@@ -16,8 +16,9 @@ ItemTransaction.destroy_all
 Game.destroy_all
 User.destroy_all
 
-params = {
-  first_name: 'Tim',
+puts 'Creating Tim...'
+
+User.new(first_name: 'Tim',
   last_name: 'Waldron',
   email: 'tim@waldron.im',
   username: 'tim',
@@ -30,15 +31,13 @@ params = {
   state: states[0],
   postcode: 3000,
   date_of_birth: Faker::Date.backward(rand(6575..18000)),
-  admin: true
-}
-User.new(params).save
-puts 'Created Tim'
+  admin: true).save
 
-params = {
-  first_name: 'David',
+puts 'Creating David...'
+
+User.new(first_name: 'David',
   last_name: 'Bui',
-  email: 'davidb9@outlook.com.au',
+  email: 'davidb9@a.a',
   username: 'david',
   :password => '123123',
   :password_confirmation => '123123',
@@ -49,11 +48,7 @@ params = {
   state: states[0],
   postcode: 3000,
   date_of_birth: Faker::Date.backward(rand(6575..18000)),
-  admin: false
-}
-User.new(params).save
-puts 'Created David'
-puts
+  admin: false).save
 
 puts 'Generating random users...'
 
@@ -61,11 +56,13 @@ puts 'Generating random users...'
   street_address = Faker::Address.street_address
   #=> "282 Kevin Brook"
 
+  user_alias = Faker::JapaneseMedia::SwordArtOnline.game_name + rand(1..9999).to_s
+
   params = {
     first_name: Faker::Name.unique.first_name,
     last_name:  Faker::Name.unique.last_name,
-    email: "ozgamers-users@waldron.im",
-    username: "#{params[:first_name].downcase}#{rand(1000..9999)}",
+    email: "#{user_alias.downcase}@fakeemail.not.real",
+    username: user_alias.downcase,
     :password => '123123',
     :password_confirmation => '123123',
     street_number: rand(1..999),
@@ -79,48 +76,50 @@ puts 'Generating random users...'
   }
 
   User.new(params).save
-  puts "Created user: User ID: #{params[:username]} | #{params[:email]}"
+  puts "Created user: #{params[:username]} | #{params[:email]}"
 end
 
 platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
+all_users = User.all
 
 25.times do
   params = {
     title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
     genre: Faker::Book.genre,
-    price: rand(1.00..100.00),
+    price: rand(1.00..100.00).round(2),
     platform: platforms.sample,
     condition: rand(0..4),
-    sold: [true, false].sample,
+    sold: false,
     note: Faker::Restaurant.review,
     rating: rand(1..10),
-    user_id: User.all.sample.id
+    user_id: all_users.sample.id
   }
 
   Game.new(params).save
   puts "Created game listing '#{params[:title]}' from user #{User.find(params[:user_id]).username}"
 end
 
-all_games = Game.all
-all_users = User.all
+# all_games = Game.all
+# 
 
-10.times do
-  item_params = {
-    item_id: all_games.sample.id,
-    buyer_id: all_users.sample.id,
-    seller_id: all_users.sample.id
-  }
+# 10.times do
+#   item_params = {
+#     item_id: all_games.sample.id,
+#     buyer_id: all_users.sample.id,
+#     seller_id: all_users.sample.id
+#   }
 
-  item_transaction = ItemTransaction.new(item_params).save
-  puts "Created transaction:"
-  puts "\tGame ID..........: #{item_params[:item_id]}"
-  puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
-  puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
-  puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
-  puts "\tSeller ID........: #{item_params[:seller_id]}"
-  puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
-  puts
+#   item_transaction = ItemTransaction.new(item_params).save
+#   puts "Created transaction:"
+#   puts "\tGame ID..........: #{item_params[:item_id]}"
+#   puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
+#   puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
+#   puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
+#   puts "\tSeller ID........: #{item_params[:seller_id]}"
+#   puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
+#   puts
 
-  update = Game.find(item_params[:item_id]).sold = true
-  update.save
-end
+#   update = Game.find(item_params[:item_id])
+#   update.sold = true
+#   update.save
+# end
