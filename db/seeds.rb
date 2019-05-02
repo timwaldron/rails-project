@@ -13,37 +13,13 @@ puts 'Generating test accounts...'
 states = ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
 
 ItemTransaction.destroy_all
-
-# all_users = User.all
-# all_games = Game.all
-
-# 10.times do
-#   item_params = {
-#     item_id: all_games.sample.id,
-#     buyer_id: all_users.sample.id,
-#     seller_id: all_users.sample.id
-#   }
-
-#   item_transaction = ItemTransaction.new(item_params).save
-#   puts "Created transaction:"
-#   puts "\tGame ID..........: #{item_params[:item_id]}"
-#   puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
-#   puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
-#   puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
-#   puts "\tSeller ID........: #{item_params[:seller_id]}"
-#   puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
-#   puts
-# end
-
-
-# return
 Game.destroy_all
 User.destroy_all
 
 params = {
   first_name: 'Tim',
   last_name: 'Waldron',
-  email: 'tim@a.a',
+  email: 'tim@waldron.im',
   username: 'tim',
   :password => '123123',
   :password_confirmation => '123123',
@@ -62,7 +38,7 @@ puts 'Created Tim'
 params = {
   first_name: 'David',
   last_name: 'Bui',
-  email: 'david@a.a',
+  email: 'davidb9@outlook.com.au',
   username: 'david',
   :password => '123123',
   :password_confirmation => '123123',
@@ -88,7 +64,7 @@ puts 'Generating random users...'
   params = {
     first_name: Faker::Name.unique.first_name,
     last_name:  Faker::Name.unique.last_name,
-    email: "#{params[:first_name].downcase}@email.com",
+    email: "ozgamers-users@waldron.im",
     username: "#{params[:first_name].downcase}#{rand(1000..9999)}",
     :password => '123123',
     :password_confirmation => '123123',
@@ -123,4 +99,28 @@ platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
 
   Game.new(params).save
   puts "Created game listing '#{params[:title]}' from user #{User.find(params[:user_id]).username}"
+end
+
+all_games = Game.all
+all_users = User.all
+
+10.times do
+  item_params = {
+    item_id: all_games.sample.id,
+    buyer_id: all_users.sample.id,
+    seller_id: all_users.sample.id
+  }
+
+  item_transaction = ItemTransaction.new(item_params).save
+  puts "Created transaction:"
+  puts "\tGame ID..........: #{item_params[:item_id]}"
+  puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
+  puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
+  puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
+  puts "\tSeller ID........: #{item_params[:seller_id]}"
+  puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
+  puts
+
+  update = Game.find(item_params[:item_id]).sold = true
+  update.save
 end
