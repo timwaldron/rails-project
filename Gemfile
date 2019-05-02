@@ -76,3 +76,6 @@ gem 'date'
 # Bootstrap
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+
+# AWS Cloud Storage
+gem "aws-sdk-s3", require: false
