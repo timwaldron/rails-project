@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   # Delete
   delete "/games/:id", to: "games#destroy", as: "destroy_game"
+
+  # Transactions
+  get "/users/transactions", to: "users#transactions", as: "user_transactions"
 end

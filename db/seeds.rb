@@ -12,6 +12,31 @@ puts 'Generating test accounts...'
 
 states = ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
 
+ItemTransaction.destroy_all
+
+# all_users = User.all
+# all_games = Game.all
+
+# 10.times do
+#   item_params = {
+#     item_id: all_games.sample.id,
+#     buyer_id: all_users.sample.id,
+#     seller_id: all_users.sample.id
+#   }
+
+#   item_transaction = ItemTransaction.new(item_params).save
+#   puts "Created transaction:"
+#   puts "\tGame ID..........: #{item_params[:item_id]}"
+#   puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
+#   puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
+#   puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
+#   puts "\tSeller ID........: #{item_params[:seller_id]}"
+#   puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
+#   puts
+# end
+
+
+# return
 Game.destroy_all
 User.destroy_all
 

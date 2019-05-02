@@ -16,12 +16,13 @@
 <p>Seller Notes: <%= @game.note.to_s %></p>
 <p>Rating: <%= @game.rating %></p>
 <p>Posted: <%= @game.created_at %></p>
+<h1>Is Sold: <%= @game.sold %></h1>
 
 <% if @game.created_at != @game.updated_at %>
   <p>Last Edited: <%= @game.updated_at %></p>
 <% end %>
 
-  <%= render "shared/stripe_form" %>
+  <%= render "shared/stripe_form" if @game.sold == false %>
 
 <% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
   <p><%= link_to 'Edit Listing', edit_game_path(@game.id) %></p>
