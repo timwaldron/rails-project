@@ -7,25 +7,24 @@ class GamesController < ApplicationController
     @games = Game.all.order("created_at DESC")
   end
 
-  def create
-    @game = Game.new(game_params.merge(user_id: current_user.id))
-
-    if @game.save
-        flash[:success] = "A Game was successfully created"
-        redirect_to show_game_path @game.id
-      else
-        render 'new'
-      end
-  end
-
   def new
-
     if (!user_signed_in?)
       flash[:success] = "You must be signed in to use this feature"
       redirect_to new_user_session_path
     else
       @game = Game.new
     end
+  end
+
+  def create
+    @game = Game.new(game_params.merge(user_id: current_user.id))
+    
+    if @game.save
+        flash[:success] = "A Game was successfully created"
+        redirect_to show_game_path @game.id
+      else
+        render 'new'
+      end
   end
 
   def handle_user_notfound
@@ -103,6 +102,6 @@ class GamesController < ApplicationController
 
   private
     def game_params
-      params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating, :images)
+      params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating, images: [])
     end
 end
