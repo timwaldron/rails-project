@@ -1,6 +1,8 @@
 <div class="game-listing">
   <% @games.each do |game| %>
 
+    <% next if game.sold %>
+
     <div class="game-listing-card">
     <div class="image-panel">
       <p>

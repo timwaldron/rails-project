@@ -5,6 +5,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all.order("created_at DESC")
+
+    @item_transactions = ItemTransaction.all
   end
 
   def new

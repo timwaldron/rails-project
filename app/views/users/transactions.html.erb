@@ -1,0 +1,23 @@
+<h1>Transaction History:</h1>
+
+<div>
+<h3>Purchased Items</h3>
+<% @items_purchased.each do |purchased| %>
+  <p>Transaction ID: <%= purchased.id %></p>
+  <p>Game Title: <%= get_game(purchased.item_id).title %></p>
+  <p>Sold Price: $<%= get_game(purchased.item_id).price %></p>
+  <p>Seller: <%= get_username(purchased.seller_id) %></p>
+  <p>Purchase at: <%= purchased.created_at %></p>
+  <br/>
+<% end %>
+</div>
+
+<h3>Sold Items</h3>
+<% @items_sold.each do |sold| %>
+  <p>Transaction ID: <%= sold.id %></p>
+  <p>Game Title: <%= get_game(sold.item_id).title %></p>
+  <p>Sold Price: $<%= get_game(sold.item_id).price %></p>
+  <p>Buyer: <%= get_username(sold.buyer_id) %></p>
+  <p>Sold at: <%= sold.created_at %></p>
+<% end %>
+</div>

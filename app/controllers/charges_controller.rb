@@ -4,9 +4,18 @@ class ChargesController < ApplicationController
   end
   
   def create
-    # Amount in cents
     @game = Game.find(params[:game_id])
     @user = User.find(params[:user_id])
+    @game.update(:sold => true)
+
+    item_params = {
+      item_id: @game.id,
+      buyer_id: @user.id,
+      seller_id: @game.user.id
+    }
+
+    @item_transaction = ItemTransaction.new(item_params).save
+    puts "Created item transaction: #{item_params}"
 
     @amount = (@game.price * 100).to_i
   
