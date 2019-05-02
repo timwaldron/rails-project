@@ -79,3 +79,6 @@ gem 'jquery-rails'
 
 # AWS Cloud Storage
 gem "aws-sdk-s3", require: false
+
+# Stripe
+gem 'stripe'

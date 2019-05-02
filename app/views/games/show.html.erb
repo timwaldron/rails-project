@@ -21,6 +21,7 @@
   <p>Last Edited: <%= @game.updated_at %></p>
 <% end %>
 
+  <%= render "shared/stripe_form" %>
 
 <% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
   <p><%= link_to 'Edit Listing', edit_game_path(@game.id) %></p>
