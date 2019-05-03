@@ -57,6 +57,7 @@
 
   <label for="images[]">Upload images</label>
   <input type="file" name="images[]" multiple="true" accept="image">
+  <input type="submit" value="Update" />  
 
   <div class="listing-images images-container">
     <% @game.images.each_with_index do |image, index| %>
@@ -72,7 +73,6 @@
     <% end %>
   </div>
   <br>
-  <input type="submit" value="Update" />  
 </form>
 
 <% else %>
