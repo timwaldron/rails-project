@@ -37,7 +37,7 @@ puts 'Creating David...'
 
 User.new(first_name: 'David',
   last_name: 'Bui',
-  email: 'davidb9@a.a',
+  email: 'davidb9@outlook.com.au',
   username: 'david',
   :password => '123123',
   :password_confirmation => '123123',
@@ -98,28 +98,3 @@ all_users = User.all
   Game.new(params).save
   puts "Created game listing '#{params[:title]}' from user #{User.find(params[:user_id]).username}"
 end
-
-# all_games = Game.all
-# 
-
-# 10.times do
-#   item_params = {
-#     item_id: all_games.sample.id,
-#     buyer_id: all_users.sample.id,
-#     seller_id: all_users.sample.id
-#   }
-
-#   item_transaction = ItemTransaction.new(item_params).save
-#   puts "Created transaction:"
-#   puts "\tGame ID..........: #{item_params[:item_id]}"
-#   puts "\tGame Title.......: #{Game.find(item_params[:item_id]).title}"
-#   puts "\tBuyer ID.........: #{item_params[:buyer_id]}"
-#   puts "\tBuyer Username...: #{User.find(item_params[:buyer_id]).username}"
-#   puts "\tSeller ID........: #{item_params[:seller_id]}"
-#   puts "\tSeller Username..: #{User.find(item_params[:seller_id]).username}"
-#   puts
-
-#   update = Game.find(item_params[:item_id])
-#   update.sold = true
-#   update.save
-# end

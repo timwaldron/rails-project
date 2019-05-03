@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/games/:id", to: "games#show", as: "show_game"
   patch "/games/:id", to: "games#update", as: "update_game"
   get "/games/:id/edit", to: "games#edit", as: "edit_game"
+  delete "/games/:id/edit/remove_image/:img_id", to: "games#remove_image", as: "remove_image"
   
   #root
   root "games#index"
