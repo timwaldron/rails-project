@@ -82,3 +82,6 @@ gem "aws-sdk-s3", require: false
 
 # Stripe
 gem 'stripe'
+
+# Mini Magik - Used for image manipulation
+gem 'mini_magick'
