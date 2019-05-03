@@ -1,22 +1,35 @@
 <% if user_signed_in? %>
-  <%= form_tag charges_path do |f|%>
-    <input type="hidden" value="<%= @game.id %>" name="game_id">
-    <input type="hidden" value="<%= current_user.id %>" name="user_id">
-    <article>
-      <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
-        </div>
-      <% end %>
-      <label class="amount">
+  <% if current_user.id != @game.user.id %>
+    <%= form_tag charges_path do |f|%>
+      <input type="hidden" value="<%= @game.id %>" name="game_id">
+      <input type="hidden" value="<%= current_user.id %>" name="user_id">
+      <%# <article> %>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        
+        <form action="create_purchase_path" method="POST" class="invisibility">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button-el"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Purchase Game"
+              data-label="Purchase for $<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %>"
+              data-amount="<%= (@game.price * 100) %>"
+              data-locale="auto">
+            </script>
+            <script>
+              document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+            </script>
 
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Purchase Game"
-                data-label="Purchase for $<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %> AUD"
-                data-amount="<%= (@game.price * 100) %>"
-                data-locale="auto"></script>
-      </label>
-    </article>
+          <button type="submit" class="btn btn-xs btn-success custom-button-width">
+          Purchase $<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %> AUD
+          </button>
+      </form>
+    <% end %>
   <% end %>
+<% else %>
+  <%= link_to 'Sign In To Purchase', new_user_session_path, class: "btn btn-xs btn-primary custom-button-width" %>
 <% end %>
+
+<script>document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';</script>
