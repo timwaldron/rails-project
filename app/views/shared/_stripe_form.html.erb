@@ -10,8 +10,8 @@
           </div>
         <% end %>
         
-        <form action="create_purchase_path" method="POST" class="invisibility">
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button-el"
+        <form action="/charges" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-description="Purchase Game"
               data-label="Purchase for $<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %>"
