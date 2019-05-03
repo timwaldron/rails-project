@@ -50,6 +50,8 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
+    
+    p params
 
     if @game.update(game_params)
       flash[:success] = "You game listing has been updated"
@@ -59,9 +61,22 @@ class GamesController < ApplicationController
     end
   end
 
+  def remove_image
+    @game = Game.find(params[:id])
+
+    if current_user && (current_user.admin? || current_user.id == @game.user.id)
+      @game.images[params[:img_id].to_i].purge
+
+      flash[:success] = "Upload was successfully removed."
+    end
+
+    redirect_to show_game_path(@game.id)
+  end
+
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
+
     flash[:success] = "Your game was successfully deleted"
     redirect_to games_path
   end
@@ -104,6 +119,6 @@ class GamesController < ApplicationController
 
   private
     def game_params
-      params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating, images: [])
+      params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating, :img_id, images: [])
     end
 end
