@@ -4,15 +4,13 @@
     <% next if game.sold %>
 
     <div class="game-listing-card">
-    <div class="image-panel">
-      <p>
-      <% if game.images.attached? %>
-        <%= image_tag game.images.first, class: 'image-size' %>
-      <% else %>
-        <p>No images for this game</p>
-      <% end %>
-      </p>
-    </div>
+      <div class="image-panel">
+        <% if game.images.attached? %>
+        <div class="thumbnail-image"><%= image_tag game.images.first.variant(resize: '300>x200>') %></div>
+        <% else %>
+          <p>No images for this game</p>
+        <% end %>
+      </div>
       <div class="game-info-panel">
         <div class="left-side">
           <p><%= game.title %></p>

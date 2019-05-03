@@ -1,0 +1,22 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+
+  .images-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .image-delete-card {
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    
+    .checkbox-style {
+      display: flex;
+    }
+  }
+}
