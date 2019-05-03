@@ -6,8 +6,6 @@ class ChargesController < ApplicationController
     @game = Game.find(params[:game_id])
     @user = User.find(params[:user_id])
 
-    @game.update(:sold => true)
-
     item_params = {
       item_id: @game.id,
       buyer_id: @user.id,
@@ -39,8 +37,10 @@ class ChargesController < ApplicationController
     NotifyMailer.with(buyer: @user, seller: @game.user, transaction: @item_transaction).confirmation_bought_email.deliver_now
     NotifyMailer.with(buyer: @user, seller: @game.user, transaction: @item_transaction).confirmation_sold_email.deliver_now
 
+    @game.update(:sold => true)
+    
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to show_game_path(@game.id)
   end
 end

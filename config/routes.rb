@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   # Purchase Game
   # get "/games/:id/purchase", to: "charges"
-  post "/games/:id/purchase", to: "charges#create", as: "create_purchase"
+  # post "/games/:id/purchase", to: "charges#create", as: "create_purchase"
 
 
   # Transactions
