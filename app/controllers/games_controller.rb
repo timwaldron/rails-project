@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :set_game, only: [:edit, :update, :show, :destroy]
   helper_method :find_username_by_id, :get_supported_platforms, :convert_item_condition
   
   # CRUD
@@ -11,7 +12,7 @@ class GamesController < ApplicationController
 
   def new
     if (!user_signed_in?)
-      flash[:success] = "You must be signed in to use this feature"
+      flash[:danger] = "You must be signed in to use this feature"
       redirect_to new_user_session_path
     else
       @game = Game.new
@@ -22,7 +23,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params.merge(user_id: current_user.id, sold: false))
     
     if @game.save
-        flash[:success] = "A Game was successfully created"
+        flash[:success] = "Your Game was successfully created"
         redirect_to show_game_path @game.id
       else
         render 'new'
@@ -34,16 +35,15 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
   end
 
   def edit
-    @game = Game.find(params[:id])
     if current_user && current_user.admin?
       render 'edit'
       return
     end 
     if @game.user != current_user 
+      flash[:danger] = "Unauthorized Access"
       redirect_to root_path
     end
   end
@@ -51,11 +51,9 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
     
-    p params
-
     if @game.update(game_params)
-      flash[:success] = "You game listing has been updated"
       redirect_to show_game_path(params[:id])
+      flash[:success] = "Your game listing has been updated"
     else
       render 'edit'
     end
@@ -74,7 +72,6 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
 
     flash[:success] = "Your game was successfully deleted"
@@ -118,6 +115,10 @@ class GamesController < ApplicationController
   # Private params
 
   private
+    def set_game
+      @game = Game.find(params[:id])
+    end
+
     def game_params
       params.permit(:title, :genre, :price, :platform, :condition, :sold, :note, :rating, :img_id, images: [])
     end
