@@ -83,3 +83,20 @@
     }
   }
 }
+.jumbotron {
+  background-color: gray
+}
+.listing-buttons {
+  display: flex;
+  width: 190px;
+  justify-content: space-between
+}
+
+.image-text-style {
+  // border: 1px solid white;
+  margin: 0px;
+}
+
+.new-create {
+  margin-bottom: 10px
+}
