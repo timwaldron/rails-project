@@ -17,16 +17,21 @@
 <p>Seller Notes: <%= @game.note.to_s %></p>
 <p>Rating: <%= @game.rating %></p>
 <p>Posted: <%= @game.created_at %></p>
+<p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
 
 <% if @game.created_at != @game.updated_at %>
   <p>Last Edited: <%= @game.updated_at %></p>
 <% end %>
 
+<div class="listing-button-layout">
   <%= render "shared/stripe_form" if @game.sold == false %>
 
-<% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
-  <p><%= link_to 'Edit Listing', edit_game_path(@game.id), class: "btn btn-xs btn-primary" %></p>
-  <p><%= link_to "delete", destroy_game_path(@game.id), method: :delete, data: { confirm: 'Are you sure you want to delete this game?' }, class: "btn btn-xs btn-danger" %></p>
-<% else %>
-  <p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
-<% end %>
+  <% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
+    <div class="edit-button-container">
+      <%= link_to 'Edit Listing', edit_game_path(@game.id), class: "btn btn-xs btn-primary custom-button-width" %>
+    </div>
+    <div class="delete-bitton-container">
+      <%= link_to "Delete Listing", destroy_game_path(@game.id), method: :delete, data: { confirm: 'Are you sure you want to delete this game?' }, class: "btn btn-xs btn-danger custom-button-width" %>
+    </div>
+  <% end %>
+</div>
