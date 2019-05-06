@@ -1,1 +1,1 @@
-<h2>Thanks, you paid <strong>$<%= number_with_delimiter(sprintf("%.2f", @game.price.round(2))) %></strong>!</h2>
+<h2>Thanks, you paid <strong><%= number_to_currency(@game.price, :unit => "$") %></strong>!</h2>

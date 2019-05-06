@@ -38,18 +38,28 @@
 
   .image-panel {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     height: 228px;
     width: 320px;
     background: $gunmetal;
-
-    img {
-      float: left;
-      width: 100%;
-      height: auto;
+    
+    .thumbnail-image {
+      height: 200px;
+      width: 200px;
     }
+
+    // .image-size {
+    //   // height: 100%;
+    //   width: auto;
+    // }
+
+    // img {
+    //   float: left;
+    //   width: 100%;
+    //   height: auto;
+    // }
   }
 
   .game-info-panel {
@@ -87,4 +97,8 @@
 .custom-button-width {
   width: 250px;
   margin: 10px 0 10px 0;
+}
+.stripe-button-hider {
+  display: flex;
+  flex-direction: column;
 }
