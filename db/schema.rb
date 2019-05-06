@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_035138) do
+ActiveRecord::Schema.define(version: 2019_05_05_021708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_035138) do
   create_table "games", force: :cascade do |t|
     t.string "title"
     t.string "genre"
-    t.float "price"
+    t.decimal "price", precision: 8, scale: 2
     t.string "platform"
     t.integer "condition"
     t.boolean "sold"
@@ -76,8 +76,8 @@ ActiveRecord::Schema.define(version: 2019_05_02_035138) do
     t.string "city"
     t.integer "postcode"
     t.date "date_of_birth"
-    t.boolean "admin"
     t.string "state"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

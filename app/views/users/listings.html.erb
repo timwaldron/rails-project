@@ -1,0 +1,35 @@
+<% if user_signed_in? && @user_id.to_i == current_user.id %>
+  <h1>Your listings</h1>
+<% else %>
+  <h1>Listings by <%= get_user(@user_id).username %></h1>
+<% end %>
+
+<div class="game-listing">
+  <% @user_listings.each do |listing| %>
+
+    <div class="game-listing-card">
+      <div class="image-panel">
+        <% if listing.images.attached? %>
+          <div class="thumbnail-image">
+            <%= image_tag listing.images.first.variant(resize: '200>x200>') %>
+          </div>
+        <% else %>
+          <p>No images for this game</p>
+        <% end %>
+      </div>
+      <div class="game-info-panel">
+        <div class="left-side">
+          <p><%= listing.title %></p>
+          <p><%= listing.platform %></p>
+        </div>
+
+        <div class="right-side">
+          <p><%= convert_item_condition(listing.condition) %></p>
+          <p><%= number_to_currency(listing.price, :unit => "$") %></p>
+          <p><%= link_to 'View Listing', show_game_path(listing.id) %></p>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

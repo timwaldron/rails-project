@@ -30,4 +30,5 @@ Rails.application.routes.draw do
 
   # Transactions
   get "/users/transactions", to: "users#transactions", as: "user_transactions"
+  get "/users/:id/listings", to: "users#listings", as: "show_user_listings"
 end
