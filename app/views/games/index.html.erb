@@ -6,7 +6,19 @@
     <div class="game-listing-card">
       <div class="image-panel">
         <% if game.images.attached? %>
-        <div class="thumbnail-image"><%= image_tag game.images.first.variant(resize: '300>x200>') %></div>
+
+          <a class="prev-icon" href="#game-image-list-<%= game.id %>" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+
+          <div class="thumbnail-image">
+            <%= render partial: 'shared/listing_images', locals: {game: game} %>
+          </div>
+
+          <a class="next-icon" href="#game-image-list-<%= game.id %>" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        
         <% else %>
           <p>No images for this game</p>
         <% end %>
@@ -15,12 +27,12 @@
         <div class="left-side">
           <p><%= game.title %></p>
           <p><%= game.platform %></p>
-          <p><strong><%= find_username_by_id(game.user_id) %></strong></p>
+          <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id) %></strong></p>
         </div>
 
         <div class="right-side">
           <p><%= convert_item_condition(game.condition) %></p>
-          <p>$<%= number_with_delimiter(sprintf("%.2f", game.price.round(2))) %></p>
+          <p><%= number_to_currency(game.price, :unit => "$") %></p>
           <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
         </div>
       </div>

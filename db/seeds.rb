@@ -86,7 +86,7 @@ all_users = User.all
   params = {
     title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
     genre: Faker::Book.genre,
-    price: rand(1.00..100.00).round(2),
+    price: rand(1..100),
     platform: platforms.sample,
     condition: rand(0..4),
     sold: false,

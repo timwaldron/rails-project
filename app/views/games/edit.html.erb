@@ -69,7 +69,7 @@
   <div class="listing-images images-container">
     <% @game.images.each_with_index do |image, index| %>
       <div class="image-delete-card">
-        <%= image_tag image.variant(resize: '300>x200>'), class: 'image-size' %>
+        <%= image_tag image.variant(resize: '200>x200>'), class: 'image-size' %>
         <%= link_to "Remove Image", remove_image_path(@game.id, index),
                 :method => :delete,
                 :data => { :confirm => t('.confirm',

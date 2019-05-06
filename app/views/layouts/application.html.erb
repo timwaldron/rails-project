@@ -2,11 +2,17 @@
 <html>
   <head>
     <title>OZ Gamers</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js", "application" %>
+    <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", "application" %>
   </head>
 
   <body>

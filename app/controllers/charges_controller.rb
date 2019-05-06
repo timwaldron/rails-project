@@ -1,14 +1,11 @@
 class ChargesController < ApplicationController
   def new
-    @game
   end
   
   def create
     @game = Game.find(params[:game_id])
     @user = User.find(params[:user_id])
-
-    @game.update(:sold => true)
-
+    
     item_params = {
       item_id: @game.id,
       buyer_id: @user.id,
@@ -17,8 +14,6 @@ class ChargesController < ApplicationController
 
     @item_transaction = ItemTransaction.new(item_params)
     @item_transaction.save
-
-    puts "Created item transaction: #{item_params}"
 
     @amount = (@game.price * 100).to_i
   
@@ -33,7 +28,11 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'aud',
     })
+
+    puts "Created item transaction: #{item_params}"
   
+    @game.update(:sold => true)
+
     # @user is the buyer
     # @game.user.id is the seller
 
@@ -42,6 +41,6 @@ class ChargesController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to show_game_path(@game.id)
   end
 end

@@ -2,6 +2,7 @@
 
   <div class="navbar-links">
     <%= link_to 'Home', root_path %>
+    <%= link_to "My Listings", show_user_listings_path(current_user.id) if user_signed_in? %>
     <%= link_to "Sell A Game", new_game_path %>
   </div>
   <div class="navbar-links">

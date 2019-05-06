@@ -1,9 +1,8 @@
 <%= render 'shared/errors', obj: @game %>
+
 <% if @game.images.attached? %>
   <div class="listing-images">
-    <% @game.images.each do |file| %>
-      <%= image_tag file, class: 'image-size' %>
-    <% end %>
+    <%= render 'shared/show_images' %>
   </div>
 <% else %>
   <p>No images for this game</p>
@@ -23,15 +22,17 @@
       <p>Last Edited: <%= @game.updated_at %></p>
     <% end %>
 
+<div class="listing-button-layout">
   <%= render "shared/stripe_form" if @game.sold == false %>
   </div>
 </div>
 
-<% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
-  <div class="listing-buttons">
-    <p><%= link_to 'Edit Listing', edit_game_path(@game.id), class: "btn btn-primary" %></p>
-    <p><%= link_to "Delete", destroy_game_path(@game.id), method: :delete, data: { confirm: 'Are you sure you want to delete this game?' }, class: "btn btn-danger" %></p>
-  </div>
-<% else %>
-  <p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
-<% end %>
+  <% if (user_signed_in? && current_user.id == @game.user_id) || can?(:manage, :all) %>
+    <div class="listing-buttons">
+      <p><%= link_to 'Edit Listing', edit_game_path(@game.id), class: "btn btn-primary" %></p>
+      <p><%= link_to "Delete", destroy_game_path(@game.id), method: :delete, data: { confirm: 'Are you sure you want to delete this game?' }, class: "btn btn-danger" %></p>
+    </div>
+  <% else %>
+    <p>Posted by: <strong><%= find_username_by_id(@game.user_id) %></strong></p>
+  <% end %>
+</div>
