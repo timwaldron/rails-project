@@ -8,12 +8,13 @@
   <input type="hidden" name="_method" value="patch" />
   <input type="hidden" value="<%= current_user.id %>" name="user_id">
 
-
-  <label for="title">Title</label>
-  <input type="text" name="title" id="title" placeholder="Title" value="<%= @game.title %>" />
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" placeholder="Title" value="<%= @game.title %>" class="form-control" />
+  </div>
 
   <label for="genre">Genre</label>
-  <select name="genre">
+  <select name="genre" class="custom-select">
     <option value="action">Action</option>
     <option value="adventure">Adventure</option>
     <option value="role-playing">Role-Playing</option>
@@ -21,44 +22,49 @@
     <option value="strategy">Strategy</option>
     <option value="sports">Sports</option>
   </select>
-
+  <br>
   <label for="platform">Platform</label>
-  <select name="platform">
+  <select name="platform" class="custom-select">
     <% get_supported_platforms().each do |platform| %>
       <option <%= 'selected' if @game.platform == platform %> value="<%= platform %>"><%= platform %></option>
     <% end %>
   </select> 
-
+  <br>
   <label for="condition">Condition</label>
-  <select name="condition">
+  <select name="condition" class="custom-select">
     <option value="4">Brand New</option>
     <option value="3">Like New</option>
     <option value="2">Very Good</option>
     <option value="1">Good</option>
     <option value="0">Acceptable</option>
   </select> 
-  
+  <br>
   <% if current_user.admin? %>
     <label for="price">Price</label>
     <input type="number" step="0.01" min="1" value="5.00" name="price" value="<%= @game.price %>">
   <% else %>
-    <p>Please email the admin to change the price or create a new one</p>
+    <p class="alert alert-danger">Please email the admin to change the price or create a new one</p>
   <% end %>
   
   <label for="rating">Rating</label>
-  <select name="rating">
+  <select name="rating" class="custom-select">
     <% for index in 1..10 do %>
       <option <%= 'selected' if @game.rating == index %> value="<%= index %>"><%= index %></option>
     <% end %>
   </select>
-
-  <label for="note">Notes</label>
-  <textarea name="note" rows="4" cols="50"><%= @game.note %></textarea>
-
-  <label for="images[]">Upload images</label>
-  <input type="file" name="images[]" multiple="true" accept="image">
   
-  <input type="submit" value="Update" />  
+  <br>
+  <label for="note">Notes</label>
+  <textarea name="note" rows="4" cols="50" class="form-control"><%= @game.note %></textarea>
+  <br>
+
+  <div class="custom-file mb-3">
+    <label for="images[]" class="custom-file-label">Upload images</label>
+    <input type="file" name="images[]" multiple="true" accept="image" class="custom-file-input" id="customFile">
+  </div>
+  <br>
+  <br> 
+  <input type="submit" value="Update" class="btn btn-outline-success" /> 
 
   <div class="listing-images images-container">
     <% @game.images.each_with_index do |image, index| %>
@@ -80,3 +86,16 @@
   <p>please sign in</p>
 
 <% end %>
+
+<script>
+const fileInput = document.querySelector('#customFile')
+fileInput.addEventListener('change', (e) => {
+  const fileArray = Array.from(e.target.files)
+  fileArray.forEach((file) => {
+    const fileText = `
+    <p class="image-text-style">${file.name}</p>
+    `
+    fileInput.insertAdjacentHTML('afterend', fileText) 
+  })
+})
+</script>

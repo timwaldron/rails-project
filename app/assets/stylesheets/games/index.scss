@@ -94,11 +94,25 @@
   }
 }
 
+.jumbotron {
+  background-color: gray
+}
+.listing-buttons {
+  display: flex;
+  width: 190px;
+  justify-content: space-between
+}
+
+.image-text-style {
+  // border: 1px solid white;
+  margin: 0px;
+}
+
+.new-create {
+  margin-bottom: 10px;
+}
+
 .custom-button-width {
   width: 250px;
   margin: 10px 0 10px 0;
-}
-.stripe-button-hider {
-  display: flex;
-  flex-direction: column;
 }
