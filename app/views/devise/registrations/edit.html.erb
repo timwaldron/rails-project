@@ -67,9 +67,19 @@
       <%= f.text_field :postcode, class: "form-control", id: "postcode" %>
     </div>
 
-    <div class="field form-group">
-      <%= f.label :state, for: "state" %>
-      <%= f.text_field :state, class: "form-control", id: "state" %>
+
+    <div class="field"> 
+      <label for="state">State</label>
+      <select name="state" class="custom-select form-control" >
+        <% get_states_array().each do |state| %>
+          <option value="<%= state %>"><%= state %></option>
+        <% end %>
+      </select> 
+    </div>
+
+    <div class="field">
+      <%= f.label :date_of_birth %><br />
+      <%= f.date_field :date_of_birth, class: "form-control", in: 1000..9999, step: 1 %>
     </div>
   </div>
 
