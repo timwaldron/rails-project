@@ -6,7 +6,7 @@
   <p>Transaction ID: <%= purchased.id %></p>
   <p>Game Title: <%= get_game(purchased.item_id).title %></p>
   <p>Sold Price: <%= number_to_currency(get_game(purchased.item_id).price, :unit => "$") %></p>
-  <p>Seller: <%= get_username(purchased.seller_id) %></p>
+  <p>Seller: <%= link_to get_username(purchased.seller_id), show_user_listings_path(purchased.seller_id) %></p>
   <p>Purchase at: <%= purchased.created_at %></p>
   <hr>
 <% end %>
@@ -17,7 +17,7 @@
   <p>Transaction ID: <%= sold.id %></p>
   <p>Game Title: <%= get_game(sold.item_id).title %></p>
   <p>Sold Price: <%= number_to_currency(get_game(sold.item_id).price, :unit => "$") %></p>
-  <p>Buyer: <%= get_username(sold.buyer_id) %></p>
+  <p>Buyer: <%= link_to get_username(sold.buyer_id), show_user_listings_path(sold.buyer_id) %></p>
   <p>Sold at: <%= sold.created_at %></p>
   <hr>
 <% end %>

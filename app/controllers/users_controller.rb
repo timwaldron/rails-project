@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def listings
-    @user_listings = Game.where(user_id: params[:id], sold: false)
     @user_id = params[:id]
+    @games = Game.where(user_id: params[:id], sold: false)
   end
 end

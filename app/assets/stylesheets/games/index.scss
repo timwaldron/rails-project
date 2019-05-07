@@ -95,7 +95,7 @@
 }
 
 .jumbotron {
-  background-color: gray
+  background-color: $black-as-black
 }
 .listing-buttons {
   display: flex;
@@ -115,4 +115,37 @@
 .custom-button-width {
   width: 250px;
   margin: 10px 0 10px 0;
+}
+
+.slideshow-container {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.current-img-bar {
+  position: absolute;
+  bottom: -40px;
+}
+
+large-caroursel-view {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+
+  height: 100%;
+  width: 100%;
+  background: dodgerblue;
+
+  img {
+    
+  }
 }
