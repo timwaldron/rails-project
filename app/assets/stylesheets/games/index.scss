@@ -23,11 +23,17 @@
 }
 
 .game-listing {
-  height: 100vh;
+  // height: 100vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.paginate-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-listing-card {
@@ -98,6 +104,7 @@
   background-color: $black-as-black
 }
 .listing-buttons {
+  margin-top: 10px;
   display: flex;
   width: 190px;
   justify-content: space-between

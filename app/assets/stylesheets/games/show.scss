@@ -6,3 +6,16 @@
   background: dodgerblue;
   width: 50%;
 }
+
+button.stripe-button-el,
+button.stripe-button-el>span {
+ background: #28a745;
+//  line-height: 0;
+//  text-align: center;
+//  width: 250px;
+//  height: 37px;
+//  margin: 0;
+//  border: none;
+//  color: #40F99B;
+ background-image: none;
+}

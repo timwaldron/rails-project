@@ -86,3 +86,7 @@ gem 'stripe'
 # Mini Magik - Used for image manipulation
 gem 'mini_magick'
 gem 'image_processing'
+
+# Pagination
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap' 
