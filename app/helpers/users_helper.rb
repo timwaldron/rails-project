@@ -1,5 +1,10 @@
 module UsersHelper
   # Returns the whole User object
+
+  def get_states_array
+    return ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
+  end
+
   def get_user(user_id)
     return User.find(user_id)
   end
