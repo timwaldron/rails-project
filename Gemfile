@@ -85,3 +85,4 @@ gem 'stripe'
 
 # Mini Magik - Used for image manipulation
 gem 'mini_magick'
+gem 'image_processing'
