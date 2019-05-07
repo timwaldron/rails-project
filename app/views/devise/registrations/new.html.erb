@@ -4,8 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -19,6 +24,55 @@
   <div class="field">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_number %><br />
+    <%= f.text_field :street_number, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_name %><br />
+    <%= f.text_field :street_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suburb %><br />
+    <%= f.text_field :suburb, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, class: "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :postcode %><br />
+    <%= f.number_field :postcode, class: "form-control", in: 1000..9999, step: 1 %>
+  </div>
+
+  <div class="field"> 
+    <label for="state">State</label>
+    <select name="state" class="custom-select form-control" >
+      <% get_states_array().each do |state| %>
+        <option value="<%= state %>"><%= state %></option>
+      <% end %>
+    </select> 
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.date_field :date_of_birth, class: "form-control", in: 1000..9999, step: 1 %>
   </div>
 
   <div class="actions">
