@@ -9,8 +9,13 @@
   flex-direction: column;
   align-items: flex-end;
 }
-
+.highlight {
+  height: 37px;
+}
 .navbar-custom-styling {
   margin-bottom: 20px;
   background: $gunmetal;
+}
+.highlight:hover {
+  border-top:3px solid #5fb760;
 }
