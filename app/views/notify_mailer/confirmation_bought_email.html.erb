@@ -8,7 +8,7 @@
     <p>I'm sure <%= @seller.first_name %> says thank you!</p>
     <br/>
     <p>Game: <%= get_game(@transaction.item_id).title %></p>
-    <p>Price: $<%= number_to_currency(get_game(@transaction.item_id).price, :unit => "$") %></p>
+    <p>Price: <%= number_to_currency(get_game(@transaction.item_id).price, :unit => "$") %></p>
     <p>Platform: <%= get_game(@transaction.item_id).platform %></p>
     <p>Transaction timestamp: <%= @transaction.created_at %></p>
   </body>
