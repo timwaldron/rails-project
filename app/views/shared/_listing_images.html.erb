@@ -1,13 +1,15 @@
 <div id="game-image-list-<%= game.id %>" class="carousel slide" data-ride="carousel" data-interval="false">
 
   <!-- Indicators -->
-  <ul class="carousel-indicators current-img-bar">
-    <li data-target="#game-image-list-<%= game.id %>" data-slide-to="0" class="active"></li>
+  <% if game.images.count > 1 %>
+    <ul class="carousel-indicators current-img-bar">
+      <li data-target="#game-image-list-<%= game.id %>" data-slide-to="0" class="active"></li>
 
-    <% for img_index in 1...game.images.count do %>
-      <li data-target="#game-image-list-<%= game.id %>" data-slide-to="<%= img_index %>"></li>
-    <% end %>
-  </ul>
+      <% for img_index in 1...game.images.count do %>
+        <li data-target="#game-image-list-<%= game.id %>" data-slide-to="<%= img_index %>"></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <!-- The slideshow -->
   <div class="carousel-inner">

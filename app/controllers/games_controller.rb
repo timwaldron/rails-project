@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   # CRUD
 
   def index
-    @games = Game.paginate(:page => params[:page])
+    @games = Game.paginate(:page => params[:page]).order("id DESC")
   end
 
   def new

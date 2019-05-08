@@ -7,15 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Random users
+puts "Seeding data... Please wait..."
+start_time = Time.now
 
-puts 'Generating test accounts...'
-
-states = ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
 
 ItemTransaction.destroy_all
 Game.destroy_all
 User.destroy_all
 
+states = ['VIC', 'TAS', 'NSW', 'QLD', 'WA', 'NT', 'ACT']
+
+puts 'Generating admin accounts...'
 puts 'Creating Tim...'
 
 User.new(first_name: 'Tim',
@@ -28,7 +30,7 @@ User.new(first_name: 'Tim',
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
-  state: states[0],
+  state: states.first,
   postcode: 3000,
   date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: true).save
@@ -45,7 +47,7 @@ User.new(first_name: 'David',
   street_name: 'Fake Street',
   suburb: 'Fakeland',
   city: 'Melbourne',
-  state: states[0],
+  state: states.first,
   postcode: 3000,
   date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: false).save
@@ -79,22 +81,68 @@ puts 'Generating random users...'
   puts "Created user: #{params[:username]} | #{params[:email]}"
 end
 
-platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
 all_users = User.all
 
-25.times do
-  params = {
-    title: Faker::Games::LeagueOfLegends.summoner_spell + " " + Faker::Games::LeagueOfLegends.location,
-    genre: Faker::Book.genre,
-    price: rand(1..100),
-    platform: platforms.sample,
-    condition: rand(0..4),
-    sold: false,
-    note: Faker::Restaurant.review,
-    rating: rand(1..10),
-    user_id: all_users.sample.id
-  }
+platforms = ['PlayStation 4', 'Xbox One', 'Nintendo Switch', 'PC']
+genres = ['Action', 'Adventure', 'Role-Playing', 'Simulation', 'Strategy', 'Sports']
 
-  Game.new(params).save
-  puts "Created game listing '#{params[:title]}' from user #{User.find(params[:user_id]).username}"
+real_titles = [
+  # Playstation 4 games
+  { title: 'Overwatch', genre: 'Action', platform: 'PlayStation 4', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10)},
+  { title: 'Minecraft', genre: 'Simulation', platform: 'PlayStation 4', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Red Dead Redemption 2', genre: 'Role-Playing', platform: 'PlayStation 4', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Crash Team Racing', genre: 'Sports', platform: 'PlayStation 4', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Days Gone', genre: 'Action', platform: 'PlayStation 4', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+
+  # Xbox One games
+  { title: 'Forza Horizon 3', genre: 'Sports', platform: 'Xbox One', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Battlefield V', genre: 'Action', platform: 'Xbox One', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'NBA 2K19', genre: 'Sports', platform: 'Xbox One', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Grand Theft Auto V', genre: 'Action', platform: 'Xbox One', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Fallout 76', genre: 'Simulation', platform: 'Xbox One', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+
+  # PC Games
+  { title: 'The Sims 4', genre: 'Simulation', platform: 'PC', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Spellforce 3', genre: 'Strategy', platform: 'PC', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'XCOM 2', genre: 'Action', platform: 'PC', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Dead Rising 4', genre: 'Action', platform: 'PC', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Frost Punk', genre: 'Role-Playing', platform: 'PC', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  
+  # Nintendo Switch
+  { title: 'Mario Kart 8 Deluxe', genre: 'Sports', platform: 'Nintendo Switch', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Mortal Kombat 11', genre: 'Action', platform: 'Nintendo Switch', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Splatoon 2', genre: 'Action', platform: 'Nintendo Switch', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'My Time at Portia', genre: 'Strategy', platform: 'Nintendo Switch', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+  { title: 'Dragons Dawn of New Riders', genre: 'Action', platform: 'Nintendo Switch', price: rand(15..100), condition: rand(0..4), sold: false, note: '', rating: rand(1..10) },
+]
+
+puts "Generating 'real' game listings [#{real_titles.count}]..."
+
+real_titles.shuffle.each do |game_hash|
+  new_game = Game.new(game_hash.merge(user_id: all_users.sample.id))
+  puts "Generated game: #{new_game.title}"
+
+  sanitized_title = new_game.title.gsub(' ', '_').downcase
+  sanitized_platform = new_game.platform.gsub(' ', '_').downcase
+
+  img_path = "#{Rails.root}/app/assets/images/seed_images/#{sanitized_platform}"
+
+  images_to_attach = []
+
+  Dir.glob("#{img_path}/#{sanitized_title}*") do |game_img|
+    images_to_attach << game_img
+  end
+
+  images_to_attach.each do |img_location|
+    new_game.images.attach(io: File.open(img_location), filename: img_location.split('/').last, content_type: 'image/*')
+    puts "Attached image to #{new_game.title}: #{img_location.split('/').last}"
+  end
+
+  new_game.save
+
+  puts "Created game listing '#{new_game.title}' from user #{User.find(new_game.user_id).username}"
 end
+
+
+end_time = Time.now
+puts "Seeding completed in #{(end_time - start_time).round(3)} seconds!"
