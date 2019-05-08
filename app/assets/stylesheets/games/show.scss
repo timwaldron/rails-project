@@ -1,10 +1,22 @@
 .large-carousel-view {
-  
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // width: 100%;
+  margin: 20px 0;
 }
 
 .carousel-custom-size {
-  background: dodgerblue;
-  width: 50%;
+  // display: flex;
+  // justify-content: center;
+  // background: dodgerblue;
+  // width: 50%;
+}
+
+.game-attached-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button.stripe-button-el,
@@ -18,4 +30,10 @@ button.stripe-button-el>span {
 //  border: none;
 //  color: #40F99B;
  background-image: none;
+}
+
+.listing-information {
+  .jumbotron {
+    padding: 0rem 2rem;
+  }
 }

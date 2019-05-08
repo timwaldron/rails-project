@@ -1,33 +1,36 @@
 <div id="game-image-list" class="carousel slide carousel-custom-size" data-ride="carousel" data-interval="false">
 
   <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#game-image-list" data-slide-to="0" class="active"></li>
+  <% if @game.images.count > 1 %>
+    <ul class="carousel-indicators">
+      <li data-target="#game-image-list" data-slide-to="0" class="active"></li>
 
-    <% for img_index in 1...@game.images.count do %>
-      <li data-target="#game-image-list" data-slide-to="<%= img_index %>"></li>
-    <% end %>
-  </ul>
+      <% for img_index in 1...@game.images.count do %>
+        <li data-target="#game-image-list" data-slide-to="<%= img_index %>"></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <!-- The slideshow -->
   <div class="carousel-inner large-carousel-view">
       <div class="carousel-item active">
-        <%= image_tag @game.images[0].variant(resize: '200>x200>'), class: 'image-size' %>
+        <%= image_tag @game.images[0].variant(resize: '200>x200>') %>
       </div>
 
       <% for img_index in 1...@game.images.count do %>
         <div class="carousel-item">
-          <%= image_tag @game.images[img_index].variant(resize: '200>x200>'), class: 'image-size' %>
+          <%= image_tag @game.images[img_index].variant(resize: '200>x200>') %>
         </div>
       <% end %>
   </div>
 
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#game-image-list" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#game-image-list" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-
+  <% if @game.images.count > 1 %>
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#game-image-list" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#game-image-list" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  <% end %>
 </div>
