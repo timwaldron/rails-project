@@ -1,4 +1,7 @@
 module GamesHelper
+
+  WillPaginate.per_page = 9
+
   def find_username_by_id(user_id)
     
     if User.exists?(id: user_id)
