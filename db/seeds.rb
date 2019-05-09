@@ -32,7 +32,6 @@ User.new(first_name: 'Tim',
   city: 'Melbourne',
   state: states.first,
   postcode: 3000,
-  date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: true).save
 
 puts 'Creating David...'
@@ -49,7 +48,6 @@ User.new(first_name: 'David',
   city: 'Melbourne',
   state: states.first,
   postcode: 3000,
-  date_of_birth: Faker::Date.backward(rand(6575..18000)),
   admin: false).save
 
 puts 'Generating random users...'
@@ -73,7 +71,6 @@ puts 'Generating random users...'
     city: Faker::Address.city,
     postcode: rand(1000..9999),
     state: states.sample,
-    date_of_birth: Faker::Date.backward(rand(6575..18000)),
     admin: false
   }
 
