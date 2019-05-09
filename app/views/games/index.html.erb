@@ -1,3 +1,9 @@
+<% if !user_signed_in? %>
+  <div class="intro">
+    <h1>Welcome to Oz Gamers</h1>
+    <div class="intro-image"></div> 
+  </div>
+<% end %>
 
 <div class="game-listing">
   <% @games.each do |game| %>
