@@ -5,9 +5,13 @@
   <div class="jumbotron jumbotron-fluid">
 
   <% if @game.images.attached? %>
-    <div class="game-attached-images">
-      <%= render 'shared/show_images' %>
-    </div>
+
+    <% if @game.images.count > 1 %>
+      <!-- Left and right controls -->
+      <div class="game-attached-images">
+        <%= render 'shared/show_images' %>
+      </div>
+    <% end %>
   <% else %>
     <p>No images for this game</p>
   <% end %>
