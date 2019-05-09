@@ -84,6 +84,7 @@
     <% @game.images.each_with_index do |image, index| %>
       <div class="image-delete-card">
         <%= image_tag image.variant(resize: '200>x200>'), class: 'image-size' %>
+        <%= link_to 'Remove Image', remove_image_path(@game.id, index), method: :delete, data: {confirm: "Are you sure?"} %>
       </div>
     <% end %>
   </div>
