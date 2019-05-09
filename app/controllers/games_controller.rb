@@ -78,7 +78,24 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
-  # Helper Method's
+  def search
+    if (params[:search_title] != nil)
+      platforms = []
+      params.each do |key, value|
+        if params[key.to_sym] == "on" 
+          platforms << key
+        end 
+      end 
+
+      @found_games = Game.where("LOWER(title) LIKE :query", query: "%#{params[:search_title].downcase}%").select do |game|
+        platforms.include?(game.platform)
+      end
+    end
+  end
+
+  def results
+
+  end
 
   # Private params
 
