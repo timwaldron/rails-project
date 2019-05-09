@@ -28,6 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 5px;
 }
 
 .paginate-container {
@@ -156,4 +157,22 @@ large-caroursel-view {
   img {
     
   }
+}
+.intro {
+  background: $black-as-black;
+  height: 400px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column
+}
+.intro h1 {
+  text-align: center;
+  width: 100%
+}
+.intro-image {
+  width: 100%;
+  height: 100%;
+  background-image: image-url('ozgamers.jpg');
+  background-repeat: no-repeat;
+  background-size: cover
 }
