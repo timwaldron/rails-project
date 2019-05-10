@@ -34,6 +34,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -91,10 +92,6 @@ class GamesController < ApplicationController
         platforms.include?(game.platform) && game.sold == false
       end
     end
-  end
-
-  def results
-
   end
 
   # Private params

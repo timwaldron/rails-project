@@ -8,6 +8,7 @@ module GamesHelper
       # Logic to email support about this issue
       return "User is missing"
     end
+    
   end
 
   def get_supported_platforms
