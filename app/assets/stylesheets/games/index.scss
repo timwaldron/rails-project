@@ -167,7 +167,8 @@ large-caroursel-view {
 }
 .intro h1 {
   text-align: center;
-  width: 100%
+  width: 100%;
+  color: #E1E2EF
 }
 .intro-image {
   width: 100%;
@@ -175,4 +176,26 @@ large-caroursel-view {
   background-image: image-url('ozgamers.jpg');
   background-repeat: no-repeat;
   background-size: cover
+}
+.left-side p {
+  color: #030301
+}
+.right-side p {
+  color: #030301
+}
+.right-side p a {
+  color: #2B0504;
+  font-weight: bold
+}
+.left-side p a {
+  color: #2B0504;
+  font-weight: bold
+}
+.right-side p a:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #2B0504
+}
+.left-side p a:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #2B0504
 }
