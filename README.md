@@ -128,6 +128,7 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 
 ### Workflow diagram
 ---
+<img src="./docs/workflow.jpg" width="700">
 
 ### Wireframe
 ---
@@ -142,6 +143,10 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 ### Project Plan & Timeline
 ---
 
+<img src="./docs/timeline1.jpg" width="700">
+
+<img src="./docs/timeline2.jpg" width="700">
+
 ### Screenshots of Trello boards
 ---
 #### 29th April
@@ -150,9 +155,11 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 #### 2th May
 <img src="./docs/trello2.png" width="">
 
-#### 10th May
+#### 9th May
 <img src="./docs/trello3.png" width="">
 
+#### 10th May
+<img src="./docs/trello4.png" width="">
 
 # **Short Answer**
 
@@ -287,7 +294,7 @@ When the user signs up successfully, there will more features on the navbar. Fir
 
  Once the user have clicked sell a game. Enter some details of a game user want to sell, then click **create**. After user click create, there will be a flash message that shows **Your Game was successfully created**. 
 
- <img src="./docs/success-create-game.png" width="500">
+ <img src="./docs/Success-create-game.png" width="500">
 
 User can click **My Listings** on the navbar and it will show the user the games the user is selling.
 
@@ -396,3 +403,8 @@ In Australia, the business has the responsibility to protect personal informatio
 Since our app has Stripe, the user can rest assured that credit card credential cannot be stolen. Therefore we able to protect user personal information from theft, misuse, interference, loss. Our App also has Devise (user authentication system) and CanCan (user restriction system), whereby we are able to protect user personal information from theft, misuse, interference, loss, unauthorised access, modification, disclosure.
 
 Our game store app also has reasonable steps to destroy or de-identify user personal information when it is no longer needed under the Privacy Act 1988. Having a Devise gem in our app, allows User to be able to delete their account. Once deleted all personal information will be destroyed. Hence our app is able to comply with the Privacy Act 1988.
+
+---
+
+## **THE END**
+---
