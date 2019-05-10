@@ -33,6 +33,6 @@ module GamesHelper
   end
 
   def set_game
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:id]) if params[:id] != nil
   end
 end

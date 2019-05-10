@@ -1,12 +1,17 @@
 <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-custom-styling">
-  <a class="navbar-brand" href="<%= games_path %>">OZ Gamers</a>
+  <a class="navbar-brand" href="<%= games_path %>">Oz Gamers</a>
+  
   <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="navbar1">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item highlight">
           <%= link_to 'Store', root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item highlight">
+          <%= link_to 'Search Store', search_game_path, class: "nav-link" %>
         </li>
         <li class="nav-item highlight">
           <%= link_to "Sell A Game", new_game_path, class: "nav-link" %>

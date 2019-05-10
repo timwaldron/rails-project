@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   # Index
   get "/games", to: "games#index", as: "games"
+
+  # Search Games
+  get "/games/search/", to: "games#search", as: "search_game"
   
   # Create
   get "/games/new", to: "games#new", as: "new_game"
@@ -26,7 +29,6 @@ Rails.application.routes.draw do
   # Purchase Game
   # get "/games/:id/purchase", to: "charges"
   # post "/games/:id/purchase", to: "charges#create", as: "create_purchase"
-
 
   # Transactions
   get "/users/transactions", to: "users#transactions", as: "user_transactions"

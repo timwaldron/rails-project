@@ -1,0 +1,62 @@
+<%= render 'shared/search_form' %>
+
+<% if @found_games != nil %>
+<div class="results-container">
+  <% if @found_games.count == 0 %>
+    <p>No results found!</p>
+  <% else %>
+  
+    <p><%= pluralize(@found_games.count, "listing") %> found!</p>
+
+    <div class="game-listing">
+
+    <% @found_games.each do |game|%>
+
+      <% next if game.sold %>
+
+      <div class="game-listing-card">
+        <div class="image-panel">
+          <% if game.images.attached? %>
+            <% if game.images.count > 1 %>
+              <a class="prev-icon" href="#game-image-list-<%= game.id %>" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+
+              <div class="thumbnail-image">
+                <%= render partial: 'shared/listing_images', locals: {game: game} %>
+              </div>
+
+              <a class="next-icon" href="#game-image-list-<%= game.id %>" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            <% else %>
+              <div class="thumbnail-image">
+                <%= render partial: 'shared/listing_images', locals: {game: game} %>
+              </div>
+            <% end %>
+          
+          <% else %>
+            <p>No images for this game</p>
+          <% end %>
+        </div>
+        <div class="game-info-panel">
+          <div class="left-side">
+            <p><%= game.title %></p>
+            <p><%= game.platform %></p>
+            <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id) %></strong></p>
+          </div>
+
+          <div class="right-side">
+            <p><%= convert_item_condition(game.condition) %></p>
+            <p><%= number_to_currency(game.price, :unit => "$") %></p>
+            <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    </div>
+
+  <% end %>
+</div>
+<% end %>

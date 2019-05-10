@@ -19,6 +19,7 @@
 @import "games/sell";
 @import "games/edit";
 @import "games/show";
+@import "games/filter";
 @import "stripe/charges";
 @import "users/profile";
 @import "users/transactions";
@@ -29,7 +30,7 @@
 }
 
 body {
-  background: $black-as-black;
+  background: rgb(46, 46, 46);
   color: white;
 }
 
