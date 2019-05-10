@@ -4,7 +4,7 @@
   <form id="filter-form" class="filter-form" action="<%= search_game_path %>">
 
     <div class="form-group">
-      <input type="text" name="search_title" id="search_title" placeholder="Search for titles" value="" />
+      <input type="text" name="search_title" id="search_title" placeholder="Search for titles" value="<%= params[:search_title] if params[:search_title] != nil %>" />
     </div>
     
     <div class="form-group">

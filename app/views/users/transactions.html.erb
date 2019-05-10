@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1 class="display-4">Hello, <%= current_user.first_name %></h1>
     <p class="lead">
-      This is some text
+      Here you can find all your transaction history.
     </p>
     <hr class="my-4">
   
@@ -22,14 +22,14 @@
               <thead>
                 <tr>
                   <% get_transaction_history_columns.each do |column| %>
-                    <th scope="col"><%= column %></th>
+                    <th class="<%= "center-invoice-text" if column.downcase == "invoice" %>" "scope="col"><%= column %></th>
                   <% end %>
                 </tr>
               </thead>
               <tbody>
                 <% @items_purchased.each do |purchased| %>
                   <tr>
-                    <th scope="row"><%= purchased.id %></th>
+                    <th class="center-invoice-text" scope="row"><%= link_to "#{purchased.id}", show_game_path(purchased.item_id) %></th>
                     <td><%= Game.find(purchased.item_id).title %></td>
                     <td><%= Game.find(purchased.item_id).platform %></td>
                     <td><%= number_to_currency(Game.find(purchased.item_id).price, :unit => "$") %></td>
