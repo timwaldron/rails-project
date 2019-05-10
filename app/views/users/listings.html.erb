@@ -1,10 +1,11 @@
 <% if user_signed_in? && @user_id.to_i == current_user.id %>
   <h1>Your listings</h1>
+  <hr>
+  <p>You don't have any listings... You can create one <%= link_to 'here!', new_game_path %></p>
 <% else %>
   <h1>Listings by <%= get_user(@user_id).username %></h1>
+  <hr>
 <% end %>
-
-<hr>
 
 <div class="game-listing">
   <% @games.each do |game| %>
