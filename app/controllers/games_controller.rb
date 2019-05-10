@@ -88,7 +88,7 @@ class GamesController < ApplicationController
       end 
 
       @found_games = Game.where("LOWER(title) LIKE :query", query: "%#{params[:search_title].downcase}%").select do |game|
-        platforms.include?(game.platform)
+        platforms.include?(game.platform) && game.sold == false
       end
     end
   end
