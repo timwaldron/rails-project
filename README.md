@@ -132,7 +132,7 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 
 ### Wireframe
 ---
-<img src="./docs/wireframe.png">
+<img src="./docs/wireframe2.png">
 
 ### Database Enitity Relationship Diagrams
 ---
@@ -353,7 +353,7 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 
 [**Oz Gamers Figma wireframe Link**](https://www.figma.com/file/UnUAJkv8s5xzLsTCD5iIa9BZ/Rails-Project?node-id=6%3A246)
 
-<img src="./docs/wireframe.png">
+<img src="./docs/wireframe2.png">
 
 
 17. **_Describe the way tasks are allocated and tracked in your project._**
