@@ -39,8 +39,15 @@ class ChargesController < ApplicationController
     NotifyMailer.with(buyer: @user, seller: @game.user, transaction: @item_transaction).confirmation_bought_email.deliver_now
     NotifyMailer.with(buyer: @user, seller: @game.user, transaction: @item_transaction).confirmation_sold_email.deliver_now
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
     redirect_to show_game_path(@game.id)
-  end
+
+    @sold_price = @game.price.to_s
+    @sold_price += "0" if @sold_price.split('.')[1].length == 1
+
+    flash[:success] = "You have sucessfully purchased this listing for $#{@sold_price}"
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to show_game_path(@game.id)
+    end
 end
