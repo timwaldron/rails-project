@@ -14,8 +14,22 @@
 }
 .navbar-custom-styling {
   margin-bottom: 20px;
-  background: $gunmetal;
+  background-color: $nav-gray;
 }
 .highlight:hover {
-  border-top:3px solid #5fb760;
+  border-bottom:3px solid #090909;
+}
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item:focus .nav-link,
+.navbar-light .nav-item:hover .nav-link {
+        color: $nav-text;
+}
+.navbar-toggler:focus {
+  outline: 0
+}
+.custom-toggler.navbar-toggler:hover {
+  border-color: $nav-text
+}
+.custom-toggler.navbar-toggler:focus {
+  border-color: $nav-text
 }
