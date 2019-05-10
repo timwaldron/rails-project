@@ -10,4 +10,8 @@ class UsersController < ApplicationController
     @user_id = params[:id]
     @games = Game.where(user_id: params[:id], sold: false)
   end
+
+  def terms_of_use
+    send_file "#{Rails.root}/app/assets/resources/TOU-LegalVision.pdf", type: "application/pdf", x_sendfile: true
+  end
 end
