@@ -7,12 +7,11 @@
   // background: red;
 
   .filter-form {
-    // width: 250px;
-    height: inherit;
-    // background: orange;
+    width: 100%;
     height: inherit;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     
     .filter-item {
