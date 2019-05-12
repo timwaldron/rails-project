@@ -1,7 +1,7 @@
 <% if user_signed_in? && @user_id.to_i == current_user.id %>
   <h1>Your listings</h1>
   <hr>
-  <p>You don't have any listings... You can create one <%= link_to 'here!', new_game_path %></p>
+  <p>You don't have any listings... You can create one <%= link_to 'here!', new_game_path, class: "badge badge-warning" %></p>
 <% else %>
   <h1>Listings by <%= get_user(@user_id).username %></h1>
   <hr>
@@ -39,7 +39,7 @@
         <div class="right-side">
           <p><%= convert_item_condition(game.condition) %></p>
           <p><%= number_to_currency(game.price, :unit => "$") %></p>
-          <p><%= link_to 'View Game', show_game_path(game.id) %></p>
+          <p><%= link_to 'View Game', show_game_path(game.id), class: "badge badge-pill badge-primary" %></p>
         </div>
       </div>
     </div>

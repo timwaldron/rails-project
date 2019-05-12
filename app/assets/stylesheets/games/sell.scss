@@ -2,3 +2,16 @@
   display: flex;
   flex-direction: column;
 }
+
+.sellgame-align {
+  width: 70%;
+}
+
+.sellpage-image {
+  width: 400px;
+  height: 100%;
+  background-image: image-url('mario.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-radius: 8px
+}

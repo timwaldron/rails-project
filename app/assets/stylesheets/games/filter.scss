@@ -5,8 +5,8 @@
   width: 100%;
   height: 100%;
   padding: 25px;
-  background: $black-as-black;
-  border-radius: 10px;
+  background: $gunmetal;
+  border-radius: 8px;
 
   .filter-form {
     width: 100%;
@@ -18,6 +18,7 @@
     
     .form-group {
       margin: 0 7px 0 7px;
+      color: $nav-text;
 
       label {
         margin: 4px 0 4px 0;

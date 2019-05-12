@@ -51,6 +51,7 @@
     height: 228px;
     width: 320px;
     background: $gunmetal;
+    border-radius: 8px 8px 0 0;
     
     .thumbnail-image {
       height: 200px;
@@ -74,6 +75,7 @@
     background: $gunmetal;
     color: white;
     height: 90px;
+    border-radius: 0 0 8px 8px;
 
     p {
       font-size: 14px;
@@ -159,7 +161,6 @@ large-caroursel-view {
   }
 }
 .intro {
-  // background: $black-as-black;
   height: 400px;
   margin: 0 0 20px 0;
   display: flex;
@@ -173,9 +174,10 @@ large-caroursel-view {
 .intro-image {
   width: 100%;
   height: 100%;
-  background-image: image-url('ozgamers.jpg');
+  background-image: image-url('cyberpunk2077.jpg');
   background-repeat: no-repeat;
-  background-size: cover
+  background-size: cover;
+  border-radius: 8px
 }
 .left-side p {
   color: #030301
@@ -183,19 +185,7 @@ large-caroursel-view {
 .right-side p {
   color: #030301
 }
-.right-side p a {
-  color: #2B0504;
-  font-weight: bold
-}
-.left-side p a {
-  color: #2B0504;
-  font-weight: bold
-}
-.right-side p a:hover {
-  text-decoration: none;
-  border-bottom: 2px solid #2B0504
-}
-.left-side p a:hover {
-  text-decoration: none;
-  border-bottom: 2px solid #2B0504
+
+.gamelist-badge {
+  padding: 0.5em;
 }

@@ -1,9 +1,10 @@
-<% if !user_signed_in? %>
-  <div class="intro">
+<div class="intro">
+  <% if !user_signed_in? %>
     <h1>Welcome to Oz Gamers</h1>
+  <% end %>
     <div class="intro-image"></div> 
-  </div>
-<% end %>
+</div>
+
 
 <div class="game-listing">
   <% @games.each do |game| %>
@@ -39,13 +40,13 @@
         <div class="left-side">
           <p><%= game.title %></p>
           <p><%= game.platform %></p>
-          <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id) %></strong></p>
+          <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id), class: "badge badge-dark gamelist-badge" %></strong></p>
         </div>
 
         <div class="right-side">
           <p><%= convert_item_condition(game.condition) %></p>
           <p><%= number_to_currency(game.price, :unit => "$") %></p>
-          <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
+          <p><%= link_to 'View Listing', show_game_path(game.id), class: "badge badge-success gamelist-badge" %></p>
         </div>
       </div>
     </div>

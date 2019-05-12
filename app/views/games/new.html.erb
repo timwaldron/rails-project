@@ -1,81 +1,87 @@
 <%= render 'shared/errors', obj: @game %>
-<h1>Sell a Game</h1>
 
-<% if !user_signed_in? %>
+<div class="intro2">
+  <div class="sellpage-image"></div> 
+</div>
 
-<% else %>
+<div class="sellgame-align">
+  <h1>Sell a Game</h1>
 
-  <form action="<%= games_path %>" class="sell-game-container" method="POST" enctype="multipart/form-data" >
-    <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
-    <input type="hidden" value="<%= current_user.id %>" name="user_id">
-    
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" class="form-control"/>
-    </div>
-    <div class="form-group"> 
-      <label for="genre">Genre</label>
-      <select name="genre" class="custom-select form-control">
-        <option value="Action">Action</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Role-Playing">Role-Playing</option>
-        <option value="Simulation">Simulation</option>
-        <option value="Strategy">Strategy</option>
-        <option value="Sports">Sports</option>
-      </select>
-    </div>
+  <% if !user_signed_in? %>
 
-    <div class="form-group"> 
-      <label for="price">Selling price</label>
-      <input type='number' step='0.01' value='5.00' name="price" min="1" id="price" class="form-control">
-    </div>
+  <% else %>
 
-    <div class="form-group"> 
-      <label for="platform">Platform</label>
-      <select name="platform" class="custom-select form-control" >
-        <% get_supported_platforms().each do |platform| %>
-          <option value="<%= platform %>"><%= platform %></option>
-        <% end %>
-      </select> 
-    </div>
+    <form action="<%= games_path %>" class="sell-game-container" method="POST" enctype="multipart/form-data" >
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+      <input type="hidden" value="<%= current_user.id %>" name="user_id">
       
-    <div class="form-group">
-      <label for="condition">Condition</label>
-      <select name="condition" class="custom-select form-control" >
-        <option value="4">Brand New</option>
-        <option value="3">Like New</option>
-        <option value="2">Very Good</option>
-        <option value="1">Good</option>
-        <option value="0">Acceptable</option>
-      </select> 
-    </div>
-
-    <div class="form-group">
-      <label for="note">Notes</label>
-      <textarea name="note" rows="4" cols="50" class="form-control"><%= @game.note %></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="rating">Rating</label>
-      <select name="rating" class="custom-select form-control">
-        <% for index in 1..10 do %>
-          <option <%= 'selected' if index == 5 %> value="<%= index %>"><%= index %></option>
-        <% end %>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="images[]">Upload images</label>
-      <div class="custom-file mb-3">
-        <input type="file" class="custom-file-input" id="customFile" name="images[]" accept="image" multiple="true">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control"/>
       </div>
-    </div>
-      <input type="submit" value="Create" class="btn btn-outline-success new-create" />
-    
-  </form>
-<% end %>
+      <div class="form-group"> 
+        <label for="genre">Genre</label>
+        <select name="genre" class="custom-select form-control">
+          <option value="Action">Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Role-Playing">Role-Playing</option>
+          <option value="Simulation">Simulation</option>
+          <option value="Strategy">Strategy</option>
+          <option value="Sports">Sports</option>
+        </select>
+      </div>
 
+      <div class="form-group"> 
+        <label for="price">Selling price</label>
+        <input type='number' step='0.01' value='5.00' name="price" min="1" id="price" class="form-control">
+      </div>
+
+      <div class="form-group"> 
+        <label for="platform">Platform</label>
+        <select name="platform" class="custom-select form-control" >
+          <% get_supported_platforms().each do |platform| %>
+            <option value="<%= platform %>"><%= platform %></option>
+          <% end %>
+        </select> 
+      </div>
+        
+      <div class="form-group">
+        <label for="condition">Condition</label>
+        <select name="condition" class="custom-select form-control" >
+          <option value="4">Brand New</option>
+          <option value="3">Like New</option>
+          <option value="2">Very Good</option>
+          <option value="1">Good</option>
+          <option value="0">Acceptable</option>
+        </select> 
+      </div>
+
+      <div class="form-group">
+        <label for="note">Notes</label>
+        <textarea name="note" rows="4" cols="50" class="form-control"><%= @game.note %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <select name="rating" class="custom-select form-control">
+          <% for index in 1..10 do %>
+            <option <%= 'selected' if index == 5 %> value="<%= index %>"><%= index %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="images[]">Upload images</label>
+        <div class="custom-file mb-3">
+          <input type="file" class="custom-file-input" id="customFile" name="images[]" accept="image" multiple="true">
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+      </div>
+        <input type="submit" value="Create a new listing" class="btn btn-outline-success new-create" />
+      
+    </form>
+  <% end %>
+</div>
 <script>
 const fileInput = document.querySelector('#customFile')
 fileInput.addEventListener('change', (e) => {

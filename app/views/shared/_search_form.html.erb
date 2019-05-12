@@ -1,34 +1,38 @@
+<div class="intro">
+  <h1></h1>
+  <div class="searchpage-image"></div> 
+</div>
 
 <div class="filter-container">
 
   <form id="filter-form" class="filter-form" action="<%= search_game_path %>">
 
     <div class="form-group">
-      <input type="text" name="search_title" id="search_title" placeholder="Search for titles" value="<%= params[:search_title] if params[:search_title] != nil %>" />
+      <input type="text" name="search_title" class="form-control" id="search_title" placeholder="Search for titles" value="<%= params[:search_title] if params[:search_title] != nil %>" />
     </div>
     
-    <div class="form-group">
-      <input type="checkbox" name="PlayStation 4" id="PlayStation 4" checked/>
-      <label for="PlayStation 4">PlayStation 4</label>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="PlayStation 4" id="PlayStation 4" checked/>
+      <label class="custom-control-label" for="PlayStation 4">PlayStation 4</label>
     </div>
     
-    <div class="form-group">
-      <input type="checkbox" name="Xbox One" id="Xbox One" checked/>
-      <label for="Xbox One">Xbox One</label>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="Xbox One" id="Xbox One" checked/>
+      <label class="custom-control-label" for="Xbox One">Xbox One</label>
     </div>
     
-    <div class="form-group">
-      <input type="checkbox" name="Nintendo Switch" id="Nintendo Switch" checked/>
-      <label for="Nintendo Switch">Nintendo Switch</label>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="Nintendo Switch" id="Nintendo Switch" checked/>
+      <label  class="custom-control-label" for="Nintendo Switch">Nintendo Switch</label>
     </div>
     
-    <div class="form-group">
-      <input type="checkbox" name="PC" id="PC" checked/>
-      <label for="PC">PC</label>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" name="PC" id="PC" checked/>
+      <label class="custom-control-label" for="PC">PC</label>
     </div>
 
     <div class="form-group">
-      <input type="submit" value="Search" />
+      <input type="submit" value="Search" type="button" class="btn btn-info btn-lg" />
     </div>
   </form>
 </div>
