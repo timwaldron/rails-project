@@ -3,11 +3,15 @@
 <% if @found_games != nil %>
 <div class="results-container">
   <% if @found_games.count == 0 %>
-    <p>No results found!</p>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p>No results found!</p>
+    </div>
   <% else %>
-  
-    <p><%= pluralize(@found_games.count, "listing") %> found!</p>
-
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <p><%= pluralize(@found_games.count, "listing") %> found!</p>
+    </div>
     <div class="game-listing">
 
     <% @found_games.each do |game|%>
@@ -43,13 +47,13 @@
           <div class="left-side">
             <p><%= game.title %></p>
             <p><%= game.platform %></p>
-            <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id) %></strong></p>
+            <p><strong><%= link_to "#{find_username_by_id(game.user_id)}", show_user_listings_path(game.user_id), class: "badge badge-dark gamelist-badge" %></strong></p>
           </div>
 
           <div class="right-side">
             <p><%= convert_item_condition(game.condition) %></p>
             <p><%= number_to_currency(game.price, :unit => "$") %></p>
-            <p><%= link_to 'View Listing', show_game_path(game.id) %></p>
+            <p><%= link_to 'View Listing', show_game_path(game.id), class: "badge badge-success gamelist-badge" %></p>
           </div>
         </div>
       </div>

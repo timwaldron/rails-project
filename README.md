@@ -16,11 +16,11 @@
 
 **Problems**
 
-We are building a two-marketplace game store app because many online stores do not check the seller items. It will also cause a lot of inconvenience to the buyer and the seller. Majority of online game stores does not provide free shipping to both the seller and the buyer. The third problem is that the seller does not get a better deal when selling their games in store.
+We are building a two-marketplace game store app because many online game stores does not check the seller items. It will also cause a lot of inconvenience to the buyer and the seller, when the buyer ask for a refund due to a faulty product. Majority of online game stores does not provide free shipping to both the seller and the buyer. The third problem is that the seller does not get a better deal when selling their games in store.
 
 **Purpose**
 
-The purpose of this game store app is to provide quality check before the item gets sent to the purchaser.   Also providing free shipping to the buyer and the seller, so that the seller does not need to mark up the price to their game to cover the shipping cost. It also allows the seller to sell their game for a better price than most stores can offer, which also allows the buyers to get a better deal.
+The purpose of this Oz game app is to provide quality check before the item gets sent to the purchaser. Also providing free shipping to the buyer and the seller, so that the seller does not need to mark up the price to their game to cover the shipping cost. It also allows the seller to sell their game for a better price than most stores can offer, which also allows the buyers to get a better deal.
 
 ### Functionaility/Features
 ---
@@ -67,24 +67,25 @@ The purpose of this game store app is to provide quality check before the item g
 * Amazon S3 - AWS - image-upload
 * Stripe - Payment Processing System
 * Mailgun - Mailing System
-* Devise - Authentication System
+* Devise - User Authentication System
 * CanCan - Authorization System
 * Heroku - deployment platform
 * VS Code
 * Ruby on Rails
 * Ruby
 * Postgres SQL
+* Puma
 
 ### Instructions to use our App
 ---
 1. Open your terminal and also make sure your Postgres SQL is running. 
 2. Find the file called rails-project, then type **cd rails-project** in your terminal and press **enter**.
-3. Then type **code .** in the terminal to open VS code.
-4. Once VS code is open, first delete the **Gemfile.lock** file and then type **bundle install** from the VS code terminal.
-5. After it finishes installing type **rails db:migrate** in the VS code terminal to create a new database migration.
-6. Then type **rails db:seed** in the terminal(VS).
-7. After it finish seeding data to the database, type **rails s** in the terminal to run the server.
-8. Copy and paste this **localhost:3000** to your favourite browser and now you should be able to see our app. Enjoy :)
+3. Then type **code .** in the terminal and press **enter** to open VS code.
+4. Once VS code is open, first delete the **Gemfile.lock** file and then type **bundle install** from the VS code terminal and press **enter**.
+5. After it finishes installing type **rails db:migrate** in the VS code terminal to create a new database migration and press **enter**.
+6. Then type **rails db:seed** in the terminal(VS) and press **enter**.
+7. After it finish seeding data to the database, type **rails s** in the terminal to run the server and press **enter**.
+8. Copy and paste this **localhost:3000** to your favourite browser and press **enter**  to your favourite browser and now you should be able to see our app. Enjoy :)
 
 # **Design Documentation**
 
@@ -94,7 +95,7 @@ The purpose of this game store app is to provide quality check before the item g
 
 ### User stories
 ---
-To be a member user must click **Sign Up** allocated in the navbar. If the user is using mobile click the hamburger menu on the right-hand corner and then click the **Sign-Up**. Both will have this green border-top when the user hovers over the Sign Up word.
+To be a member user must click **Sign Up** allocated in the navbar. If the user is using mobile click the hamburger menu on the right-hand corner and then click the **Sign-Up**. Both will have this black border-bottom when the user hovers over the Sign Up word.
 
 Once the user click the **Sign Up**, the user enters details and then click **sign up**.
 
@@ -272,15 +273,15 @@ In our game model each game belongs_to the user because we want to set up a one-
 15. **_Provide User stories for your App._**
 ---
 
-To be a member user must click **Sign Up** allocated in the navbar. If the user is using mobile click the hamburger menu on the right-hand corner and then click the **Sign-Up**. Both will have this green border-top when the user hovers over the Sign Up word.
+To be a member user must click **Sign Up** allocated in the navbar. If the user is using mobile click the hamburger menu on the right-hand corner and then click the **Sign-Up**. Both will have this black border-bottom when the user hovers over the Sign Up word.
 
 **Mobile**
 
-<img src="./docs/sign-up-mob.png" width="300">
+<img src="./docs/sign-up-mob2.png" width="300">
 
 **Desktop**
 
-<img src="./docs/sign-up-desk.png" width="500">
+<img src="./docs/sign-up-desk2.png" width="500">
 
 Once the user click the **Sign Up**, the user enters details and then click **sign up**.
 
@@ -359,7 +360,15 @@ Once clicked paid it will show **Thanks, you paid $amount**. And if the user cli
 17. **_Describe the way tasks are allocated and tracked in your project._**
 ---
 
-We allocated the task mostly through in-person discussion and also we create a task in Trello (to do). For each task, we want to do we mostly notify each other in class or through the SLACK. 
+We allocated the task mostly through in-person discussion and also we create a task in Trello (to do). For each task, we want to do we mostly notify each other in class or through the SLACK.
+
+[**Oz Gamers Trello Link**](https://trello.com/b/PafDlHIB/rails-project)
+
+**Some slack messages**
+
+<img src="./docs/slack1.png" width="600">
+
+<img src="./docs/slack2.png" width="600">
 
 18. **_Discuss how Agile methodology is being implemented in your project._**
 ---
@@ -373,7 +382,7 @@ The type of Agile methodology we are implementing for our project is Kanban. It 
 ---
 [**OZ Gamers GITHUB Repository Link**](https://github.com/timwaldron/rails-project)
 
-Every time one of our team members finishes a Task and wants to push it to Github. They must put their code on a different branch beside the master branch. After they **git add .**, **git commit -m** and **git push origin branch name**. They must do a pull request on the Github website, once they’re able to do that the other team member will check it and confirm it. So it can be able to merge to the master branch for safety reason
+Every time one of our team members finishes a Task and wants to push it to Github. They must put their code on a different branch beside the master branch. After they **git add .**, **git commit -m** and **git push origin branch name**. They must do a pull request on the Github website, once they’re able to do that the other team member will check it and confirm it. So it can be able to merge to the master branch for safety reason.
 
 <img src="./docs/git-history.png" width="500">
 

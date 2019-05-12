@@ -7,7 +7,7 @@
     <div class="field form-group">
       <%= f.label :username, for: "username" %>
       <%= f.text_field :username, disabled: true, class: "form-control", id: "username"%>
-      <small class="form-text text-muted form-inline">Currently, you cannot change your username.</small>
+      <small class="form-text text-light form-inline">Currently, you cannot change your username.</small>
     </div>
 
     <div class="field form-group ">
@@ -23,7 +23,7 @@
       <%= f.label :password, for: "pwd" %> <i>(leave blank if you don't want to change it)</i>
       <%= f.password_field :password, class: "form-control", id: "pwd" %>
       <% if @minimum_password_length %>
-        <small class="form-text text-muted form-inline"><%= @minimum_password_length %> characters minimum</small>
+        <small class="form-text text-light form-inline"><%= @minimum_password_length %> characters minimum</small>
       <% end %>
     </div>
 
@@ -82,7 +82,7 @@
     <div class="confirm-password-field form-group">
       <%= f.label :current_password, for: "current-password" %> 
       <%= f.password_field :current_password, class: "form-control", id: "current-password"  %>
-      <small class="form-text text-muted">(we need your current password to confirm your changes)</small>
+      <small class="form-text text-light">(we need your current password to confirm your changes)</small>
     </div>
 
     <div class="submit-button">
@@ -92,6 +92,6 @@
 
   <div class="field">
     <h3>Cancel my account</h3>
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "badge badge-primary" %></p>
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "badge badge-danger" %></p>
   </div>
 <% end %>
